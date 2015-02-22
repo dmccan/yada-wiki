@@ -6,6 +6,9 @@ function yada_wiki_shortcode( $atts ) {
 		'link_text' => '', 
 	), $atts ) ); 
 	
+	$wiki_page = sanitize_text_field($wiki_page);
+	$link_text = sanitize_text_field($link_text);
+	
 	return get_yada_wiki_link( $wiki_page, $link_text );
 }
 
@@ -16,7 +19,7 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 
 	$site = get_option('siteurl');
 
-	$target = get_page_by_title( $wiki_page, OBJECT, 'yada_wiki');
+	$target = get_page_by_title( html_entity_decode($wiki_page), OBJECT, 'yada_wiki');
 
 	if(!$link_text){ $link_text = $wiki_page; }
 
