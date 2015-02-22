@@ -1,10 +1,10 @@
 === Yada Wiki ===
-Contributors: David McCan
-Tags: wiki, shortcode
+Contributors: dmccan
+Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.1.1
-Stable tag: trunk
-License: GPLv2
+Stable tag: 1.0
+License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Yada Wiki is a simple wiki for your WordPress site.
@@ -16,8 +16,6 @@ Yada Wiki provides a wiki post type and an easy to use shortcode, available via 
 * The link_text parameter takes the link description that you want to show.
 
 When viewing wiki pages, if the wiki page does not exist, and the user has permissions to create posts and pages, then the link_text shows up in red and can be clicked on to go to the page editor to create the new page.  If the user does not have permissions, then they see the link_text in red, but no link is shown.
-
-
 
 == Installation ==
 You can install the Yada Wiki plugin either via the WordPress.org plugin directory or by uploading the files to your server.  Once the plugin is installed, you can activate the plugin through the Plugins menu in WordPress

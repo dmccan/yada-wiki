@@ -20,18 +20,11 @@ if ( ! defined( 'WPINC' ) ) die;
 include('includes/register-wiki-cpt.php'); 
 add_action( 'init', 'register_yada_wiki', 0 ); 
 
-/***********************************************
-* Rrtrieve plugin settings from options table
-*****  Do not have any yet                 *****
-***********************************************/
-//$yada_wiki_options = get_option('yada_wiki_settings');
-
 /************************************************
 * Functions to handle the wiki link shortcode
 ************************************************/
 include('includes/handle-shortcode.php'); 
 add_shortcode('yada-wiki', 'yada_wiki_shortcode');
-add_filter('widget_text', 'do_shortcode'); 
 
 /************************************************
 * Functions to add shortcode button to editor
