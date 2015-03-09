@@ -2,14 +2,14 @@
 
 function yada_wiki_shortcode( $atts ) {
 	extract( shortcode_atts( array( 
-		'wiki_page' => '', 
-		'link_text' => '', 
+		'link' => '', 
+		'show' => '', 
 	), $atts ) ); 
 	
-	$wiki_page = sanitize_text_field($wiki_page);
-	$link_text = sanitize_text_field($link_text);
+	$link = sanitize_text_field($link);
+	$show = sanitize_text_field($show);
 	
-	return get_yada_wiki_link( $wiki_page, $link_text );
+	return get_yada_wiki_link( $link, $show );
 }
 
 function get_yada_wiki_link( $wiki_page, $link_text ){
@@ -39,6 +39,31 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 		else{
 			$just_text = '<span style="color:red;">'.$link_text.'</span>';
 			return $just_text;
+		}
+	}
+}
+
+function yada_wiki_toc_shortcode( $atts ) {
+	extract( shortcode_atts( array( 
+		'show_toc' => '', 
+	), $atts ) ); 
+	
+	$show_toc = sanitize_text_field($show_toc);
+	
+	return get_yada_wiki_toc( $show_toc );
+}
+
+function get_yada_wiki_toc( $show_toc ){
+
+	$show_toc  = trim($show_toc);
+
+	if($show_toc == true) {
+		$the_toc = get_page_by_title( html_entity_decode("toc"), OBJECT, 'yada_wiki');
+		$toc_status = get_post_status( $the_toc );
+		
+		if( $toc_status == "publish" ) {
+			$the_content = apply_filters( 'the_content', $the_toc->post_content );
+			return $the_content;
 		}
 	}
 }

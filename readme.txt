@@ -10,12 +10,16 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Yada Wiki is a simple wiki for your WordPress site.
 
 == Description ==
-Yada Wiki provides a wiki post type and an easy to use shortcode, available via a button on the editor toolbar.  When you click the button the shortcode is inserted into your edit window at the cursor location.  The shortcode takes two parameters:  
+Yada Wiki provides a wiki post type, custom tags and categories, and a table of contents option.  The plugin allows you to link your wiki pages together using the wiki page titles.  
 
-* The wiki_page parameter takes the title of the page you are linking to.
-* The link_text parameter takes the link description that you want to show.
+There are two easy to use shortcodes, available via buttons on the editor toolbar.  When you click the first button, the wiki link button, a shortcode is inserted into your edit window at the cursor location.  The shortcode takes two parameters:  
 
-When viewing wiki pages, if the wiki page does not exist, and the user has permissions to create posts and pages, then the link_text shows up in red and can be clicked on to go to the page editor to create the new page.  If the user does not have permissions, then they see the link_text in red, but no link is shown.
+* The "link" parameter takes the title of the wiki page you are linking to.
+* The "show" parameter takes the link description that you want to show.
+
+When viewing wiki pages, if the wiki page exists it shows as a link.  If it does not exist, and the user has permissions to create posts and pages, then the link shows up in red to indicate that the page needs to be created.  You can click on the link to go to the page editor to create the new page.  If the user does not have permissions, then they see the title in red, but no link is available.
+
+With Yada Wiki, you can create a special wiki post with the title of "TOC", for table of contents, and create a wiki post that will serve as the table of contents for your wiki.  You can use wiki links and style the table of contents as you like in the post editor.  The second button inserts a table of contents shortcode into the editor window at the cursor location.  This will insert the TOC wiki page you created at the shortcode location.  Note that the TOC only shows if it has been published.  
 
 == Installation ==
 You can install the Yada Wiki plugin either via the WordPress.org plugin directory or by uploading the files to your server.  Once the plugin is installed, you can activate the plugin through the Plugins menu in WordPress
@@ -23,4 +27,12 @@ You can install the Yada Wiki plugin either via the WordPress.org plugin directo
 == Frequently Asked Questions ==
 Q.  Can I include external links and links to non-wiki pages in my wiki?
 
-A.   Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to link to external sites or regular posts or pages, then use the usual methods in the post editor to do so, but not the Yada Wiki shortcode.
+A.  Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to link to external sites or regular posts or pages, then use the usual methods in the post editor to do so, but not the Yada Wiki shortcode.
+
+Q.  Can I use the TOC shortcode to add a custom menu in the sidebar?
+
+A.  No, the shortcodes only work on wiki pages. If you want to use custom menus for your wiki pages, you can create them in the regular menu editor.  
+
+Q.  How can I display the custom tags and categories?  
+
+A.  You can use the tag cloud widget to display the wiki custom tags. There are also plugins in the WordPress repository that will allow you to display custom categories (or taxonomies).  

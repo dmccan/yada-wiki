@@ -8,7 +8,7 @@
                 title : 'Add Wiki Link',  
                 image : url+'/img/wiki-link.png',  
                 onclick : function() {  
-                     editor.insertContent('[yada-wiki wiki_page="" link_text=""]');  
+                     editor.insertContent('[yadawiki link="" show=""]');  
                 }  
             });  
         },  
@@ -17,6 +17,5 @@
             return null;  
         }    
     });  
-
     tinymce.PluginManager.add('yada_wiki', tinymce.plugins.yada_wiki);  
 })();
