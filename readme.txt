@@ -25,14 +25,22 @@ With Yada Wiki, you can create a special wiki post with the title of "TOC", for 
 You can install the Yada Wiki plugin either via the WordPress.org plugin directory or by uploading the files to your server.  Once the plugin is installed, you can activate the plugin through the Plugins menu in WordPress
 
 == Frequently Asked Questions ==
-Q.  Can I include external links and links to non-wiki pages in my wiki?
+=  Can I include external links and links to non-wiki pages in my wiki?
 
-A.  Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to link to external sites or regular posts or pages, then use the usual methods in the post editor to do so, but not the Yada Wiki shortcode.
+Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to link to external sites or regular posts or pages, then use the usual methods in the post editor to do so, but not the Yada Wiki shortcode.
 
-Q.  Can I use the TOC shortcode to add a custom menu in the sidebar?
+=Can I use the TOC shortcode to add a custom menu in the sidebar?
 
-A.  No, the shortcodes only work on wiki pages. If you want to use custom menus for your wiki pages, you can create them in the regular menu editor.  
+No, the shortcodes only work on wiki pages. If you want to use custom menus for your wiki pages, you can create them in the regular menu editor.  
 
-Q.  How can I display the custom tags and categories?  
+=How can I display the custom tags and categories?  
 
-A.  You can use the tag cloud widget to display the wiki custom tags. There are also plugins in the WordPress repository that will allow you to display custom categories (or taxonomies).  
+You can use the tag cloud widget to display the wiki custom tags. There are also plugins in the WordPress repository that will allow you to display custom categories (or taxonomies).  
+
+=Is the plugin compatible with WordPress multisite?
+
+It has not been tested with multisite.  
+
+=Can I use custom permalinks?
+
+The wiki links are based on links to wiki page titles, so it is expected that you will use the "Post name" type of permalink structure.  
