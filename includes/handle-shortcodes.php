@@ -30,10 +30,8 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 	} else {
 
 		if ( is_user_logged_in() ){
-
 			$slug  = urlencode($wiki_page);
-			$new_link = $site.'/wp-admin/post-new.php?post_type=yada_wiki&post_title='.$slug;
-
+			$new_link = admin_url( 'post-new.php?post_type=yada_wiki&post_title='.$slug );
 			return '<a href="'.$new_link.'" title="This wiki page does not yet exist. Create it (requires valid access/permissions)" style="color:red;">'.$link_text.'</a>';
 		} 
 		else{
