@@ -27,8 +27,13 @@ function yada_wiki_add_buttons() {
             }
             // added by David McCan
             elseif ( is_edit_page('new') ) {
-            	$type_test = sanitize_text_field( $_GET['post_type'] );
-            	$typenow = $type_test;
+            	if(empty($_GET['post_type'])) {
+            		$typenow = "post";	
+            	}
+            	else {
+            		$type_test = sanitize_text_field( $_GET['post_type'] );
+            		$typenow = $type_test;
+            	}
             }
         }		
 		
