@@ -79,7 +79,7 @@ function register_yada_wiki_cats() {
 	);
 	$args = array(
 		'labels'                     => $labels,
-		'hierarchical'               => false,
+		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
 		'query_var'                  => true,
