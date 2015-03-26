@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.1.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,10 +12,12 @@ Yada Wiki is a simple wiki for your WordPress site.
 == Description ==
 Yada Wiki provides a wiki post type, custom tags and categories, and a table of contents option.  The plugin allows you to link your wiki pages together using the wiki page titles.  
 
-There are two easy to use shortcodes, available via buttons on the editor toolbar.  When you click the first button, the wiki link button, a shortcode is inserted into your edit window at the cursor location.  The shortcode takes two parameters:  
+There are two easy to use shortcodes, available via buttons on the editor toolbar.  When you click the first button, the wiki link button, a pop-up opens where you enter the two parameters:  
 
 * The "link" parameter takes the title of the wiki page you are linking to.
 * The "show" parameter takes the link description that you want to show.
+
+When you click "OK", a shortcode is inserted into your edit window at the cursor location.  
 
 When viewing wiki pages, if the wiki page exists it shows as a link.  If it does not exist, and the user has permissions to create posts and pages, then the link shows up in red to indicate that the page needs to be created.  You can click on the link to go to the page editor to create the new page.  If the user does not have permissions, then they see the title in red, but no link is available.
 
@@ -54,3 +56,8 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 = 1.0.1 =
 * Fix for empty post type
 
+= 1.1.0 =
+* Change to make wiki categories hierarchical
+
+= 1.2.0 =
+* Added editor dialog to make it easier to enter the wiki shortcode parameters
