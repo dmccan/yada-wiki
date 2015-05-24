@@ -1,21 +1,18 @@
 /***************************************
 * Add yada_wiki TOC Button
 ***************************************/
-(function() {  
+(function($) {  
     tinymce.create('tinymce.plugins.yada_wiki_toc', {  
         init : function(editor, url) {  
             editor.addButton('yada_wiki_toc', {  
                 title : 'Add Wiki TOC',  
                 image : url+'/img/wiki-toc.png',  
                 onclick : function() {  
-                     editor.insertContent('[yadawikitoc show_toc="true"]');  
+	            	$('#popup_yw_toc_dialog').dialog("open");
+                    //$("#popup_yw_category").focus();
                 }  
             });  
-        },  
-       
-        createControl : function(n, cm) {  
-            return null;  
         }    
     });  
     tinymce.PluginManager.add('yada_wiki_toc', tinymce.plugins.yada_wiki_toc);  
-})();
+})(jQuery);

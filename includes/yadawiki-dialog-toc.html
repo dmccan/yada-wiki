@@ -1,0 +1,67 @@
+<style>
+ .ui-widget-overlay {
+ 	z-index: 10000 !important;
+ 	position: fixed !important;
+ }
+ .ui-dialog {
+ 	z-index: 100001 !important;
+ }
+#popup_yw_submit {
+	width: auto;
+	background-color: #6EA9D3;
+	color: #FFF;
+	padding: 8px;
+	border: none;
+	border-radius: 4px;
+}
+#popup_yw_submit:hover {
+	cursor: pointer;
+}    
+</style>
+<div id="popup_yw_toc_dialog" title="Yada Wiki TOC" class="popup_dialog">
+    <form id="popup_yw_toc_form">
+		<span style="font-style:italic;font-size:12px;padding-left:80px;"><?php _e("(Category and Order are optional)", 'yada_wiki_domain'); ?></span>
+        <table class="form-table">
+            <tr>
+                <th><label for="popup_yw_category"><?php _e("Category:", 'yada_wiki_domain'); ?></label></th>
+                <td align="right">
+				<select id="popup_yw_category" name="popup_yw_category" style="width:140px">
+                <?php 
+			   		$args = array(
+						'type'                     => 'yada_wiki',
+						'child_of'                 => 0,
+						'parent'                   => '',
+						'orderby'                  => 'name',
+						'order'                    => 'ASC',
+						'hide_empty'               => 1,
+						'hierarchical'             => 1,
+						'taxonomy'                 => 'wiki_cats',
+						'pad_counts'               => false 
+					); 
+					$categories = get_categories( $args );
+					echo '<option value=""></option>';
+					foreach ( $categories as $category ) {
+						$option = '<option value="'.$category->cat_name.'">'.$category->cat_name.' ('.$category->category_count.')</option>';
+						echo $option;
+					}
+				?>
+				</select>
+                </td>
+            </tr>
+            <tr>
+                <th><label for="popup_yw_order"><?php _e("Order:", 'yada_wiki_domain'); ?></label></th>
+                <td align="right">
+					<select id="popup_yw_order" name="popup_yw_order" style="width:140px">
+						<option value=""></option>
+						<option value="<?php _e('title', 'yada_wiki_domain'); ?>"><?php _e('Title A-Z', 'yada_wiki_domain'); ?></option>
+						<option value="<?php _e('date', 'yada_wiki_domain'); ?>"><?php _e('Creation Date', 'yada_wiki_domain'); ?></option>
+					</select>
+                </td>
+            </tr>
+            <tr>
+                <th>&nbsp;</th>  
+                <td align="right"><input type="button" onclick="javascript:doYWTOCSubmit();" name="popup_yw_submit" id="popup_yw_submit" value="<?php _e('Insert Yada Wiki TOC', 'yada_wiki_domain'); ?>" /></td>
+            </tr>
+        </table>
+    </form>
+</div>

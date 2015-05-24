@@ -1,4 +1,8 @@
 <?php 
+/***************************************
+* Abort if called outside of WordPress
+***************************************/
+defined('ABSPATH') or die("Access Denied.");
 
 function yada_wiki_shortcode( $atts ) {
 	extract( shortcode_atts( array( 
@@ -13,13 +17,10 @@ function yada_wiki_shortcode( $atts ) {
 }
 
 function get_yada_wiki_link( $wiki_page, $link_text ){
-
 	$wiki_page  = trim($wiki_page);
-	$link_text = trim($link_text);
-
-	$site = get_option('siteurl');
-
-	$target = get_page_by_title( html_entity_decode($wiki_page), OBJECT, 'yada_wiki');
+	$link_text 	= trim($link_text);
+	$site 		= get_option('siteurl');
+	$target 	= get_page_by_title( html_entity_decode($wiki_page), OBJECT, 'yada_wiki');
 
 	if(!$link_text){ $link_text = $wiki_page; }
 
@@ -28,7 +29,6 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 		return '<a href="'.$permalink.'">'.$link_text.'</a>';
 
 	} else {
-
 		if ( is_user_logged_in() ){
 			$slug  = urlencode($wiki_page);
 			$new_link = admin_url( 'post-new.php?post_type=yada_wiki&post_title='.$slug );
@@ -44,18 +44,44 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 function yada_wiki_toc_shortcode( $atts ) {
 	extract( shortcode_atts( array( 
 		'show_toc' => '', 
+		'category' => '', 
+		'order' => '', 
 	), $atts ) ); 
 	
-	$show_toc = sanitize_text_field($show_toc);
+	$show_toc 	= sanitize_text_field($show_toc);
+	$category 	= sanitize_text_field($category);
+	$order 		= sanitize_text_field($order);
 	
-	return get_yada_wiki_toc( $show_toc );
+	return get_yada_wiki_toc( $show_toc, $category, $order );
 }
 
-function get_yada_wiki_toc( $show_toc ){
+function get_yada_wiki_toc( $show_toc, $category, $order ){
+	$show_toc  	= trim($show_toc);
+	$category  	= trim($category);
+	$order  	= trim($order);
 
-	$show_toc  = trim($show_toc);
-
-	if($show_toc == true) {
+	if($category != "") {
+		if($order == "") {
+			$order = "title";
+		}
+		$args = array( 
+			'posts_per_page' 	=> -1, 
+			'offset'			=> 0,
+			'post_type' 		=> 'yada_wiki', 
+			'wiki_cats'        	=> $category,
+			'orderby' 			=> $order,
+			'order' 			=> 'ASC',
+			'post_status' 		=> 'publish'
+		); 	
+		$cat_list = get_posts( $args );
+		$cat_output = '<ul>';
+		foreach ( $cat_list as $item ) {
+			$cat_output = $cat_output . '<li><a href="' .get_page_link($item->ID).'">'.$item->post_title.'</a></li>';
+		}
+		$cat_output = $cat_output . '</ul>';
+		return $cat_output;
+	}
+	else if($show_toc == true) {
 		$the_toc = get_page_by_title( html_entity_decode("toc"), OBJECT, 'yada_wiki');
 		$toc_status = get_post_status( $the_toc );
 		

@@ -1,4 +1,8 @@
 <?php
+/***************************************
+* Abort if called outside of WordPress
+***************************************/
+defined('ABSPATH') or die("Access Denied.");
 
 if ( ! function_exists('register_yada_wiki') ) {
 
