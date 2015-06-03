@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.2
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Yada Wiki is a simple wiki for your WordPress site.
 == Description ==
 Yada Wiki provides a wiki post type, custom tags and categories, and a table of contents option.  The plugin allows you to link your wiki pages together using the wiki page titles.  
 
-When viewing wiki pages, if the wiki page exists it shows as a link.  If it does not exist, and the user has permissions to create posts and pages, then the link shows up in red to indicate that the page needs to be created.  You can click on the link to go to the page editor to create the new page.  If the user does not have permissions, then they see the title in red, but no link is available.
+When viewing wiki pages, if the wiki page exists it shows as a link.  If it does not exist, and the user has permissions to edit posts, then the link shows up in red to indicate that the page needs to be created.  You can click on the link to go to the page editor to create the new page.  If the user does not have permissions, then they see the title in red, but no link is available.
 
 There are two easy to use shortcodes, available via buttons on the editor toolbar.  
 
@@ -45,7 +45,7 @@ Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to l
 
 * How can I add a wiki table of contents menu in the sidebar?
 
-There is now a sidebar widget so that you can include the TOC or a category list of wiki article. It is a multi-instance widget so you can have more that one version of the widget active at a time.
+There is now a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more that one version of the widget active at a time.
 
 * Can I use the sidebar widget with Page Builder plugins?
 
@@ -91,3 +91,6 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 * The links dialog has an AJAX lookup of existing wiki post titles.
 * The TOC dialog has a drop-down list of categories.
 * A sidebar TOC / category list widget was added.
+
+= 2.1.0 =
+* Adjusted user permissions so that roles have the same edit abilities for wiki articles as they do for regular posts.  

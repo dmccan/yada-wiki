@@ -12,7 +12,7 @@ if ( is_admin() ) {
 function yada_wiki_admin() {  
 	
 	// Only add buttons if editing a Yada Wiki post
-	if ( current_user_can('edit_posts') && current_user_can('edit_pages') ) {  
+	if ( current_user_can('edit_posts') ) {  
 
 		// Snippet adapted from Ross McKay - http://snippets.webaware.com.au/snippets/wordpress-admin_init-hook-and-the-elusive-typenow/
 		global $typenow;

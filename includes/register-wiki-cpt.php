@@ -51,7 +51,7 @@ function register_yada_wiki() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'rewrite'             => $rewrite,
-		'capability_type'     => 'page',
+		'capability_type'     => 'post',
 	);
 	register_post_type( 'yada_wiki', $args );
 }
