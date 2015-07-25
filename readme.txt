@@ -2,8 +2,8 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.2
-Stable tag: 2.1.0
+Tested up to: 4.3
+Stable tag: 2.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -59,6 +59,10 @@ You can include regular wiki link shortcodes in your TOC.  You can also add mult
 
 You can use the tag cloud widget to display the wiki custom tags. There are also plugins in the WordPress repository that will allow you to display custom categories (or taxonomies).  
 
+* How do I control comment options?
+
+Yada Wiki does not support comments by default.  There is a Yada Wiki sub-menu under the main settings menu where you can enable comment options and set defaults for new wiki pages.
+
 * After upgrading the plugin the wiki editor buttons are gone. How do I get them back?
 
 The way the buttons are loaded was changed in version 2.  If you do not see the buttons you may need to clear your browser cache.  
@@ -87,10 +91,16 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 * Added editor dialog to make it easier to enter the wiki shortcode parameters
 
 = 2.0.0 =
-* Changed the editor dialogs to be inline jQuery UI dialogs. 
-* The links dialog has an AJAX lookup of existing wiki post titles.
+* Changed the editor dialogs to be in-line jQuery UI dialogs. 
+* The links dialog has an AJAX look-up of existing wiki post titles.
 * The TOC dialog has a drop-down list of categories.
 * A sidebar TOC / category list widget was added.
 
 = 2.1.0 =
-* Adjusted user permissions so that roles have the same edit abilities for wiki articles as they do for regular posts.  
+* Adjusted user permissions so that roles have the same edit abilities for wiki articles as they do for regular posts.
+
+= 2.2.0 =
+* Added optional support for comments.
+* Added a settings page to control comment options for wiki pages.
+* Removed old style PHP constructor in preparation for 4.3.
+* Fixed deprecated function calls that gave a debug warning.

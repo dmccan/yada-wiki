@@ -3,7 +3,7 @@
 Plugin Name: Yada Wiki
 Plugin URI: http://www.davidmccan.com/yada-wiki
 Description: This plugin provides a simple wiki for your WordPress site.
-Version: 2.1.0
+Version: 2.2.0
 Author: David McCan
 Author URI: http://www.davidmccan.com/author/
 License: GPL2
@@ -46,16 +46,26 @@ if ( ! is_admin() ) {
 }
 
 /************************************************
+* Honor wiki settings and link to settings page
+************************************************/
+include('includes/yadawiki-honor-settings.php'); 
+add_action('init', 'yadawiki_load_settings');
+add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'yada_wiki_add_settings_link' );
+
+/************************************************
 * Registers the wiki toc widget
 ************************************************/
 include('includes/yadawiki-widgets.php'); 
 add_action('widgets_init', 'yadawiki_toc_widget_register_widgets');
 
-/************************************************
-* Functions to add shortcode buttons to editor
-************************************************/
+/****************************************************************
+* Functions to add shortcode buttons to editor and settings page
+****************************************************************/
 if ( is_admin() ) {
     include('includes/yadawiki-backend.php'); 
-	add_action( 'plugins_loaded', 'yada_wiki_admin', 10 ); 
-    add_action('wp_ajax_yada_wiki_suggest', 'yada_wiki_suggest_callback');
+    include('includes/yadawiki-settings.php'); 
+	add_action( 'admin_enqueue_scripts', 'yada_wiki_admin', 10 ); 
+    add_action( 'wp_ajax_yada_wiki_suggest', 'yada_wiki_suggest_callback' );
+	add_action( 'admin_menu', 'yada_wiki_add_admin_menu' );
+	add_action( 'admin_init', 'yada_wiki_settings_init' );
 }

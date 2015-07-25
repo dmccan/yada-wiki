@@ -10,7 +10,7 @@ defined('ABSPATH') or die("Access Denied.");
 class yadawiki_toc_widget extends WP_Widget {
 
 	function yadawiki_toc_widget() {
-		parent::WP_Widget(false, $name = __('Yada Wiki TOC', 'yada_wiki_domain') );
+		parent::__construct(false, $name = __('Yada Wiki TOC', 'yada_wiki_domain') );
 	}
 
 	function form( $instance ) {
@@ -90,6 +90,7 @@ class yadawiki_toc_widget extends WP_Widget {
 		$title 		= apply_filters('widget_title', $instance['title']);
 		$category 	= $instance['category'];
 		$order 		= $instance['order'];
+		$yw_widget_content = "";
 
 		if ( $category != "" ) {
 			if ( $order == "" ) {
@@ -108,9 +109,11 @@ class yadawiki_toc_widget extends WP_Widget {
 		}
 		else {
 			$the_toc = get_page_by_title( html_entity_decode("toc"), OBJECT, 'yada_wiki');
-			$toc_status = get_post_status( $the_toc );
-			if( $toc_status == "publish" ) {
-				$yw_widget_content = apply_filters( 'the_content', $the_toc->post_content );
+			if ( $the_toc != "") {
+				$toc_status = get_post_status( $the_toc );
+				if( $toc_status == "publish" ) {
+					$yw_widget_content = apply_filters( 'the_content', $the_toc->post_content );
+				}
 			}
 		}
 		echo $before_widget;
