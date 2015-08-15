@@ -3,14 +3,14 @@ jQuery(document).ready(function() {
      jQuery("#popup_yw_dialog").dialog({
         autoOpen: false,
         modal: true,
-        height: 270,
-        width: 325
+        height: 290,
+        width: 345
     });        
      jQuery("#popup_yw_toc_dialog").dialog({
         autoOpen: false,
         modal: true,
-        height: 275,
-        width: 300
+        height: 285,
+        width: 310
     });        
 });
 function doYWLookup(what) {
