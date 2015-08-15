@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.3
-Stable tag: 2.2.0
+Stable tag: 2.3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -104,3 +104,6 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 * Added a settings page to control comment options for wiki pages.
 * Removed old style PHP constructor in preparation for 4.3.
 * Fixed deprecated function calls that gave a debug warning.
+
+= 2.3.0 =
+* Adjusted version number to keep updates in sync.
