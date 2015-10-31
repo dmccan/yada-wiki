@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.3
-Stable tag: 2.4.0
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,3 +111,6 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 = 2.4.0 =
 * Added filter to override default display of categories in the post editor to maintain order and hierarchy.
 * Fixed problem with shortcode popup display due to conflict with other plugins.
+
+= 2.5.1 =
+* Update to get files in sync and fix tagging error.
