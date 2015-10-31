@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.3
-Stable tag: 2.5.1
+Stable tag: 2.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,10 @@ You can install the Yada Wiki plugin either via the WordPress.org plugin directo
 
 Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to link to external sites or regular posts or pages, then use the usual methods in the post editor to do so, but not the Yada Wiki shortcode.
 
+* Can I use the wiki shortcode in non-wiki posts and pages?
+
+Yes, there is a Yada Wiki sub-menu under the main settings menu where you can enable showing the Yada Wiki shortcode buttons when editing posts and pages.  Remember, the wiki shortcode is only for linking to wiki pages.
+
 * How can I add a wiki table of contents menu in the sidebar?
 
 There is now a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more that one version of the widget active at a time.
@@ -75,6 +79,17 @@ The plugin is not compatible with multisite.
 
 The wiki links are based on links to wiki page titles, so it is expected that you will use the "Post name" type of permalink structure.  
 
+* How can I change the colors of the wiki links?
+
+When rendered on the viewed page, wiki links are given a CSS class related to their post status (published, draft, etc). You can override the default colors in your style sheet. The classes are:
+  .wikilink-published 
+  .wikilink-pending 
+  .wikilink-no-edit 
+  .wikilink-new 
+  .widget-area .widget a.wikilink-published 
+  .widget-area .widget a.wikilink-pending 
+  .widget-area .widget a.wikilink-no-edit 
+  .widget-area .widget a.wikilink-new 
 
 == Changelog ==
 
@@ -114,3 +129,7 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 
 = 2.5.1 =
 * Update to get files in sync and fix tagging error.
+
+= 2.6 =
+* Added different CSS classes for wiki links depending on post status.  Added style sheet for wiki link classes.
+* Added option to show Yada Wiki editor buttons on the editing screen for all post types, in addition to the wiki post type.

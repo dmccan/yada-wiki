@@ -40,8 +40,14 @@ function yada_wiki_admin() {
             	}
             }
         }		
+
+		$options = get_option( 'yada_wiki_settings' );
+		$yadaWikiEditorButtons = false;
+		if ( isset($options['yada_wiki_checkbox_editor_buttons_setting']) ) {
+			$yadaWikiEditorButtons = true;
+		}
 		
-		if (is_edit_page() && "yada_wiki" == $typenow){
+		if (is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
             foreach ( array('post.php','post-new.php') as $hook ) {
                 add_action( "admin_footer-$hook", 'yw_admin_footer' );
             }    

@@ -4,6 +4,10 @@
 ***************************************/
 defined('ABSPATH') or die("Access Denied.");
 
+function yada_wiki_scripts() {
+	wp_enqueue_style( 'yada-wiki', plugins_url('yadawiki.css', __FILE__) );
+}
+
 function yada_wiki_shortcode( $atts ) {
 	extract( shortcode_atts( array( 
 		'link' => '', 
@@ -24,18 +28,36 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 
 	if(!$link_text){ $link_text = $wiki_page; }
 
-	if($target){
-		$permalink = get_permalink($target->ID);
-		return '<a href="'.$permalink.'">'.$link_text.'</a>';
-
+	if($target && current_user_can('edit_posts')){
+        if ($target->post_status == 'publish') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-published">'.$link_text.'</a>';
+        }
+        elseif ($target->post_status == 'draft' || $target->post_status == 'future') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-pending">'.$link_text.'</a>';
+        }
+        else {
+            $just_text = '<span class="wikilink-trash">'.$link_text.'</span>';
+            return $just_text;
+        }
+	} elseif ($target) {
+        if ($target->post_status == 'publish') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-published">'.$link_text.'</a>';
+        }		
+		else{
+			$just_text = '<span class="wikilink-no-edit">'.$link_text.'</span>';
+			return $just_text;
+		}
 	} else {
 		if ( current_user_can('edit_posts') ){
 			$slug  = urlencode($wiki_page);
 			$new_link = admin_url( 'post-new.php?post_type=yada_wiki&post_title='.$slug );
-			return '<a href="'.$new_link.'" title="This wiki page does not yet exist. Create it (requires valid access/permissions)" style="color:red;">'.$link_text.'</a>';
+			return '<a href="'.$new_link.'" title="This wiki page does not yet exist. Create it (requires valid access/permissions)" class="wikilink-new">'.$link_text.'</a>';
 		} 
 		else{
-			$just_text = '<span style="color:red;">'.$link_text.'</span>';
+			$just_text = '<span class="wikilink-no-edit">'.$link_text.'</span>';
 			return $just_text;
 		}
 	}
@@ -76,7 +98,7 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 		$cat_list = get_posts( $args );
 		$cat_output = '<ul>';
 		foreach ( $cat_list as $item ) {
-			$cat_output = $cat_output . '<li><a href="' .get_page_link($item->ID).'">'.$item->post_title.'</a></li>';
+			$cat_output = $cat_output . '<li><a href="'.get_page_link($item->ID).'">'.$item->post_title.'</a></li>';
 		}
 		$cat_output = $cat_output . '</ul>';
 		return $cat_output;

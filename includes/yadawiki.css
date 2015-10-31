@@ -1,0 +1,31 @@
+.wikilink-published {
+	color:inherit;
+}
+
+.wikilink-pending {
+	color:#9933FF;
+}
+
+.wikilink-no-edit {
+	color:#B81324;
+}
+
+.wikilink-new {
+	color:#B81324;
+}
+
+.widget-area .widget a.wikilink-published {
+    color:inherit;
+}
+
+.widget-area .widget a.wikilink-pending {
+    color:#9933FF;
+}
+
+.widget-area .widget a.wikilink-no-edit {
+    color:#B81324;
+}
+
+.widget-area .widget a.wikilink-new {
+    color:#B81324;
+}

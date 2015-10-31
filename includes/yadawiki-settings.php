@@ -36,7 +36,7 @@ function yada_wiki_settings_init() {
 
 	add_settings_section(
 		'yada_wiki_pluginPage_section', 
-		__( 'Wiki Comment Settings', 'yada_wiki_domain' ), 
+		__( 'Wiki Options', 'yada_wiki_domain' ), 
 		'yada_wiki_settings_section_callback', 
 		'pluginPage'
 	);
@@ -61,6 +61,14 @@ function yada_wiki_settings_init() {
 		'yada_wiki_checkbox_trackbacks_setting', 
 		__( 'On new wiki page: trackbacks and pingbacks checked by default', 'yada_wiki_domain' ), 
 		'yada_wiki_checkbox_trackbacks_setting_render', 
+		'pluginPage', 
+		'yada_wiki_pluginPage_section' 
+	);
+
+	add_settings_field( 
+		'yada_wiki_checkbox_editor_buttons_setting', 
+		__( 'Show Wiki Shortcode Buttons for Regular Posts and Pages', 'yada_wiki_domain' ), 
+		'yada_wiki_checkbox_editor_buttons_setting_render', 
 		'pluginPage', 
 		'yada_wiki_pluginPage_section' 
 	);
@@ -103,32 +111,22 @@ function yada_wiki_checkbox_trackbacks_setting_render() {
 
 }
 
+/***************************************************
+* Show editor buttons on posts and pages
+***************************************************/
+function yada_wiki_checkbox_editor_buttons_setting_render() { 
+
+	$options = get_option( 'yada_wiki_settings' );
+	?>
+	<input type='checkbox' name='yada_wiki_settings[yada_wiki_checkbox_editor_buttons_setting]' <?php checked( isset($options['yada_wiki_checkbox_editor_buttons_setting']), 1 ); ?> value='1'>
+	<?php
+
+}
+
 /******************************
 * Process settings
 *******************************/
 function yada_wiki_settings_section_callback() { 
-	/*
-	$options = get_option( 'yada_wiki_settings' );
-	
-	if ( isset($options['yada_wiki_checkbox_comment_options']) ) {
-		echo __( '<div class="updated">Comment Options Enabled for Wiki Pages.</div>', 'yada_wiki_domain' );
-		if ( isset($options['yada_wiki_checkbox_comments_setting']) ) {
-			echo __( '<div class="updated">Allow comments checked by default.</div>', 'yada_wiki_domain' );
-		}
-		else {
-			echo __( '<div class="updated">Allow comments unchecked by default.</div>', 'yada_wiki_domain' );
-		}
-		if ( isset($options['yada_wiki_checkbox_trackbacks_setting']) ) {
-			echo __( '<div class="updated">Allow trackbacks and pingbacks checked by default.</div>', 'yada_wiki_domain' );
-		}
-		else {
-			echo __( '<div class="updated">Allow trackbacks and pingbacks unchecked by default.</div>', 'yada_wiki_domain' );
-		}
-	}
-	else {
-		echo __( '<div class="updated">Comments Options Disabled for Wiki Pages.</div>', 'yada_wiki_domain' );
-	}
-	*/
 }
 
 /******************************
@@ -148,7 +146,7 @@ function yada_wiki_options_page() {
 			?>		
 		</form>
 		<div style="text-align: center; width:75%;">
-			(Comment options must be enabled<br />for defauts to be set)
+			Comment options must be enabled<br />for defauts to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.
 		</div>
 		</div>			
 	</div>
