@@ -29,27 +29,43 @@ function get_yada_wiki_link( $wiki_page, $link_text ){
 	if(!$link_text){ $link_text = $wiki_page; }
 
 	if($target && current_user_can('edit_posts')){
-        if ($target->post_status == 'publish') {
-            $permalink = get_permalink($target->ID);
-            return '<a href="'.$permalink.'" class="wikilink-published">'.$link_text.'</a>';
-        }
-        elseif ($target->post_status == 'draft' || $target->post_status == 'future') {
-            $permalink = get_permalink($target->ID);
-            return '<a href="'.$permalink.'" class="wikilink-pending">'.$link_text.'</a>';
-        }
-        else {
+        if ($target->post_status == 'trash') {
             $just_text = '<span class="wikilink-trash">'.$link_text.'</span>';
             return $just_text;
         }
+        elseif ($target->post_status == 'draft' || $target->post_status == 'auto-draft' || $target->post_status == 'pending' || $target->post_status == 'future') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-pending">'.$link_text.'</a>';
+        }
+        elseif ($target->post_status == 'private') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-private">'.$link_text.'</a>';
+        }
+        elseif ($target->post_status == 'publish') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-published">'.$link_text.'</a>';
+        }
+        else {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-other">'.$link_text.'</a>';
+        }
 	} elseif ($target) {
-        if ($target->post_status == 'publish') {
+        if ($target->post_status == 'trash' || $target->post_status == 'draft' || $target->post_status == 'auto-draft' || $target->post_status == 'pending' || $target->post_status == 'future') {
+			$just_text = '<span class="wikilink-no-edit">'.$link_text.'</span>';
+			return $just_text;
+        }
+        elseif ($target->post_status == 'private') {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-private">'.$link_text.'</a>';
+        }
+        elseif ($target->post_status == 'publish') {
             $permalink = get_permalink($target->ID);
             return '<a href="'.$permalink.'" class="wikilink-published">'.$link_text.'</a>';
         }		
-		else{
-			$just_text = '<span class="wikilink-no-edit">'.$link_text.'</span>';
-			return $just_text;
-		}
+        else {
+            $permalink = get_permalink($target->ID);
+            return '<a href="'.$permalink.'" class="wikilink-other">'.$link_text.'</a>';
+        }
 	} else {
 		if ( current_user_can('edit_posts') ){
 			$slug  = urlencode($wiki_page);

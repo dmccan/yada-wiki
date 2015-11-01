@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.3
-Stable tag: 2.6
+Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,9 +34,11 @@ The TOC shorcode takes two optional parameters:  "Category" and "Order".  If no 
 **Sidebar Widget:**
 There is also a widget for showing the TOC article or a category list in the sidebar.  Please see the FAQ section for information about using the sidebar widget.
 
-
 == Installation ==
 You can install the Yada Wiki plugin either via the WordPress.org plugin directory or by uploading the files to your server.  Once the plugin is installed, you can activate the plugin through the Plugins menu in WordPress.
+
+== Screenshots ==
+1. These are the editor buttons for the Yada Wiki shortcodes.  
 
 == Frequently Asked Questions ==
 * Can I include external links and links to non-wiki pages in my wiki?
@@ -81,38 +83,47 @@ The wiki links are based on links to wiki page titles, so it is expected that yo
 
 * How can I change the colors of the wiki links?
 
-When rendered on the viewed page, wiki links are given a CSS class related to their post status (published, draft, etc). You can override the default colors in your style sheet. The classes are:
-  .wikilink-published 
-  .wikilink-pending 
-  .wikilink-no-edit 
-  .wikilink-new 
-  .widget-area .widget a.wikilink-published 
-  .widget-area .widget a.wikilink-pending 
-  .widget-area .widget a.wikilink-no-edit 
-  .widget-area .widget a.wikilink-new 
+When rendered on the viewed page, wiki links are given a CSS class related to their post status (published, draft, etc). You can override the default colors in your style sheet. This is a convenience for those with edit permissions who might not realize that wiki articles have not been published. Note that WordPress permissions still control what posts can actually be viewed, this is just related to the display of wiki links. The classes are:
+
+When viewing links for users **with** the "edit_posts" capacity:
+
+  * .wikilink-new (post does not exist - a link to create it)
+  * .wikilink-trash (post is in the trash - just text, no link)
+  * .wikilink-pending (post has the status of "draft", "auto-draft", "pending", or "future" - a regular link)
+  * .wikilink-private (post has a status of "private" - a regular link)
+  * .wikilink-published (the post is published - a regular link)
+  * .wikilink-other (default if not one of the above. Applied to posts with a custom post status or to those with a status of "inherit" - a regular link)
+  
+When viewing links for users **without** the "edit posts" capacity:  
+
+  * .wikilink-no-edit (post does not yet exist or the post has the status of "trash", "draft", "auto-draft", "pending", or "future" - just text, no link)
+  * .wikilink-published (the post is published - a regular link)
+  * .wikilink-private (post has a status of "private" - a regular link)
+  * .wikilink-other (default if not one of the above. Applied to posts with a custom post status or to those with a status of "inherit" - a regular link)
+
+== Acknowledgements ==
+
+The user JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
 
-= 1.0 =
-* Initial release
+= 2.6.1 =
+* Fixed post status filter so all posts show as they should.
+* Added additional CSS classes.  
 
-= 1.0.1 =
-* Fix for empty post type
+= 2.6 =
+* Added different CSS classes for wiki links depending on post status.  Added style sheet for wiki link classes.
+* Added option to show Yada Wiki editor buttons on the editing screen for all post types, in addition to the wiki post type.
 
-= 1.1.0 =
-* Change to make wiki categories hierarchical
+= 2.5.1 =
+* Update to get files in sync and fix tagging error.
 
-= 1.2.0 =
-* Added editor dialog to make it easier to enter the wiki shortcode parameters
+= 2.4.0 =
+* Added filter to override default display of categories in the post editor to maintain order and hierarchy.
+* Fixed problem with shortcode popup display due to conflict with other plugins.
 
-= 2.0.0 =
-* Changed the editor dialogs to be in-line jQuery UI dialogs. 
-* The links dialog has an AJAX look-up of existing wiki post titles.
-* The TOC dialog has a drop-down list of categories.
-* A sidebar TOC / category list widget was added.
-
-= 2.1.0 =
-* Adjusted user permissions so that roles have the same edit abilities for wiki articles as they do for regular posts.
+= 2.3.0 =
+* Adjusted version number to keep updates in sync.
 
 = 2.2.0 =
 * Added optional support for comments.
@@ -120,16 +131,23 @@ When rendered on the viewed page, wiki links are given a CSS class related to th
 * Removed old style PHP constructor in preparation for 4.3.
 * Fixed deprecated function calls that gave a debug warning.
 
-= 2.3.0 =
-* Adjusted version number to keep updates in sync.
+= 2.1.0 =
+* Adjusted user permissions so that roles have the same edit abilities for wiki articles as they do for regular posts.
 
-= 2.4.0 =
-* Added filter to override default display of categories in the post editor to maintain order and hierarchy.
-* Fixed problem with shortcode popup display due to conflict with other plugins.
+= 2.0.0 =
+* Changed the editor dialogs to be in-line jQuery UI dialogs. 
+* The links dialog has an AJAX look-up of existing wiki post titles.
+* The TOC dialog has a drop-down list of categories.
+* A sidebar TOC / category list widget was added.
 
-= 2.5.1 =
-* Update to get files in sync and fix tagging error.
+= 1.2.0 =
+* Added editor dialog to make it easier to enter the wiki shortcode parameters
 
-= 2.6 =
-* Added different CSS classes for wiki links depending on post status.  Added style sheet for wiki link classes.
-* Added option to show Yada Wiki editor buttons on the editing screen for all post types, in addition to the wiki post type.
+= 1.1.0 =
+* Change to make wiki categories hierarchical
+
+= 1.0.1 =
+* Fix for empty post type
+
+= 1.0 =
+* Initial release

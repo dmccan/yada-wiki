@@ -1,9 +1,5 @@
-.wikilink-published {
-	color:inherit;
-}
-
-.wikilink-pending {
-	color:#9933FF;
+.wikilink-trash {
+	color:#B81324;
 }
 
 .wikilink-no-edit {
@@ -14,18 +10,47 @@
 	color:#B81324;
 }
 
-.widget-area .widget a.wikilink-published {
-    color:inherit;
+.wikilink-pending {
+	color:#9933FF;
 }
 
-.widget-area .widget a.wikilink-pending {
+.wikilink-other {
+	color:inherit;
+}
+
+.wikilink-private {
+	color:inherit;
+}
+
+.wikilink-published {
+	color:inherit;
+}
+
+.widget-area .widget .wikilink-trash {
+    color:#B81324;
+}
+
+.widget-area .widget .wikilink-no-edit {
+    color:#B81324;
+}
+
+.widget-area .widget .wikilink-new {
+    color:#B81324;
+}
+
+.widget-area .widget .wikilink-pending {
     color:#9933FF;
 }
 
-.widget-area .widget a.wikilink-no-edit {
-    color:#B81324;
+.widget-area .widget .wikilink-other {
+    color:inherit;
 }
 
-.widget-area .widget a.wikilink-new {
-    color:#B81324;
+.widget-area .widget .wikilink-private {
+    color:inherit;
 }
+
+.widget-area .widget .wikilink-published {
+    color:inherit;
+}
+
