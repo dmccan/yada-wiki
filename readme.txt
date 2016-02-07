@@ -2,8 +2,8 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.3
-Stable tag: 2.6.1
+Tested up to: 4.4
+Stable tag: 2.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,6 +106,12 @@ When viewing links for users **without** the "edit posts" capacity:
 The user JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
+
+= 2.6.3 =
+* Fixed TOC category output for shortcode and widget.
+
+= 2.6.2 =
+* Updated widget constructor so as to remove PHP 7 deprecation warning. 
 
 = 2.6.1 =
 * Fixed post status filter so all posts show as they should.

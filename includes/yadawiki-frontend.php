@@ -97,7 +97,7 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 	$show_toc  	= trim($show_toc);
 	$category  	= trim($category);
 	$order  	= trim($order);
-
+	
 	if($category != "") {
 		if($order == "") {
 			$order = "title";
@@ -105,8 +105,14 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 		$args = array( 
 			'posts_per_page' 	=> -1, 
 			'offset'			=> 0,
-			'post_type' 		=> 'yada_wiki', 
-			'wiki_cats'        	=> $category,
+			'post_type' 		=> 'yada_wiki',
+			'tax_query'			=> array(
+									array(
+										'taxonomy' => 'wiki_cats', 
+										'field' => 'name', 
+										'terms' => $category, 
+									),
+								   ),
 			'orderby' 			=> $order,
 			'order' 			=> 'ASC',
 			'post_status' 		=> 'publish'

@@ -3,7 +3,7 @@
 Plugin Name: Yada Wiki
 Plugin URI: http://www.davidmccan.com/yada-wiki
 Description: This plugin provides a simple wiki for your WordPress site.
-Version: 2.6.1
+Version: 2.6.3
 Author: David McCan
 Author URI: http://www.davidmccan.com/author/
 License: GPL2

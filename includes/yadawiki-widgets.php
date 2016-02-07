@@ -9,7 +9,7 @@ defined('ABSPATH') or die("Access Denied.");
 ***************************************/
 class yadawiki_toc_widget extends WP_Widget {
 
-	function yadawiki_toc_widget() {
+	function __construct() {
 		parent::__construct(false, $name = __('Yada Wiki TOC', 'yada_wiki_domain') );
 	}
 
@@ -100,7 +100,13 @@ class yadawiki_toc_widget extends WP_Widget {
 				'posts_per_page' 	=> -1, 
 				'offset'			=> 0,
 				'post_type' 		=> 'yada_wiki', 
-				'wiki_cats'        	=> $category,
+				'tax_query'			=> array(
+										array(
+											'taxonomy' => 'wiki_cats', 
+											'field' => 'name', 
+											'terms' => $category, 
+										),
+									   ),
 				'orderby' 			=> $order,
 				'order' 			=> 'ASC',
 				'post_status' 		=> 'publish'
