@@ -2,37 +2,53 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.4
-Stable tag: 2.6.3
+Tested up to: 4.5.3
+Stable tag: 2.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Yada Wiki is a simple wiki for your WordPress site.
 
 == Description ==
-Yada Wiki provides a wiki post type, custom tags and categories, and a table of contents option.  The plugin allows you to link your wiki pages together using the wiki page titles.  
+Yada Wiki provides a wiki post type, custom tags and categories, an index, and a table of contents option.  The plugin allows you to link your wiki pages together using the wiki page titles.  
 
-When viewing wiki pages, if the wiki page exists it shows as a link.  If it does not exist, and the user has permissions to edit posts, then the link shows up in red to indicate that the page needs to be created.  You can click on the link to go to the page editor to create the new page.  If the user does not have permissions, then they see the title in red, but no link is available.
+There are two easy to use shortcode buttons available on the editor toolbar.  
 
-There are two easy to use shortcodes, available via buttons on the editor toolbar.  
+**The "Add Wiki Link" Button:**
+When you click the first button, the add wiki link button, a pop-up opens where you enter the title of the wiki page you are linking to in the "Link" text box.  You can optionally enter text into the "Show" text box that you want to show for the link, or leave that blank to just show the title.  
 
-**Links Shortcode:**
-When you click the first button, the wiki link button, a pop-up opens where you enter the two parameters:  
+When you click "OK", a shortcode is inserted into your edit window at the cursor location.  For example to link to a wiki page called "How To Make Iced Coffee" but show the text for the link as "How To Make My Favorite Drink":
 
-* The "link" parameter takes the title of the wiki page you are linking to.  The "link" parameter is required.
-* The "show" parameter takes the link description that you want to show.  The "show" parameter is optional.  If it is blank then the value of the "link" parameter is shown.
+[yadawiki link="How To Make Iced Coffee" show="How To Make My Favorite Drink"]
 
-For convenience, the pop-up does an AJAX lookup of wiki page titles when you are typing in the "link" field.  
+You use Wiki Link shortcodes to create the structure of linked pages.
 
-When you click "OK", a shortcode is inserted into your edit window at the cursor location.  
+**The "Add Wiki Listing" Button:**
+The Add Wiki Listing button gives you three options for adding some collected output. 
 
-**TOC Shortcode:**
-With Yada Wiki, you can create a special wiki post with the title of "TOC", for table of contents, and create a wiki post that will serve as the table of contents for your wiki.  You can use wiki links and style the table of contents as you like in the post editor.  The second button opens a pop-up for the TOC shortcode.  
+*Output TOC Page*
+The first option inserts a shortcode that will output your "TOC" page. With Yada Wiki, you can create a special wiki page with the title of "TOC" that will serve as the table of contents for your wiki.  You can use wiki links and style the table of contents as you like in the post editor. Selecting this option allows you to embed the TOC page in another page. For example:
 
-The TOC shorcode takes two optional parameters:  "Category" and "Order".  If no optional parameter is chosen then the content of the TOC wiki article will show in the shortcode location when the page is viewed.  Note that the TOC only shows if it has been published.  If a "Category" is chosen then that will override the insertion of the TOC content and will instead insert a list of the wiki articles assigned to that category.  The category list can be ordered by article title or by article creation date.  Title is the default.  If no category is chosen the "Order" parameter is ignored.
+[yadawikitoc show_toc="true"]
+
+*Output Wiki Category*
+The second option inserts a list of the wiki pages for one of your wiki categories. You can optionally choose to output the list by title or by creation date.  For example:  
+
+[yadawikitoc show_toc="true" category="Drinks" order="title"]
+
+*Output Index*
+The third option inserts an index of your wiki pages.  The output is in a responsive table-like grid and you can choose the number of columns.  For example:
+
+[yadawiki-index type="pages" columns="4"]
 
 **Sidebar Widget:**
-There is also a widget for showing the TOC article or a category list in the sidebar.  Please see the FAQ section for information about using the sidebar widget.
+There is also a Yada Wiki widget for showing the TOC page and a list of article titles for a given category in the sidebar.  Please see the FAQ section for information about using the sidebar widget. 
+
+**Video Walk-through:**
+This video provides a walk-though of all of the features:
+
+https://youtu.be/yixVePH3IpA
+
 
 == Installation ==
 You can install the Yada Wiki plugin either via the WordPress.org plugin directory or by uploading the files to your server.  Once the plugin is installed, you can activate the plugin through the Plugins menu in WordPress.
@@ -41,6 +57,10 @@ You can install the Yada Wiki plugin either via the WordPress.org plugin directo
 1. These are the editor buttons for the Yada Wiki shortcodes.  
 
 == Frequently Asked Questions ==
+* Why are some wiki links red?
+
+When viewing wiki pages, if the wiki page exists it shows as a link.  If it does not exist, and the user has permissions to edit posts, then the link shows up in red to indicate that the page needs to be created.  You can click on the link to go to the page editor to create the new page.  If the user does not have permissions, then they see the title in red, but no link is available.
+
 * Can I include external links and links to non-wiki pages in my wiki?
 
 Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to link to external sites or regular posts or pages, then use the usual methods in the post editor to do so, but not the Yada Wiki shortcode.
@@ -107,6 +127,13 @@ The user JulianSMoore has been very helpful in suggesting improvements and revie
 
 == Changelog ==
 
+= 2.7 =
+* Added the index shortcode option which outputs a grid of wiki pages using a responsive table-like format.
+* Added help text to the Links pop-up dialog.
+* Added help text to the TOC pop-up dialog.
+* Separated the TOC options in the TOC pop-up dialog, showing and hiding options depending on the type of output desired so as to make the choices more obvious. 
+* Reworked the read me file to simplify the description section, add shortcode examples, and provide a link to a walk-through video.  
+
 = 2.6.3 =
 * Fixed TOC category output for shortcode and widget.
 
@@ -126,7 +153,7 @@ The user JulianSMoore has been very helpful in suggesting improvements and revie
 
 = 2.4.0 =
 * Added filter to override default display of categories in the post editor to maintain order and hierarchy.
-* Fixed problem with shortcode popup display due to conflict with other plugins.
+* Fixed problem with shortcode pop-up display due to conflict with other plugins.
 
 = 2.3.0 =
 * Adjusted version number to keep updates in sync.

@@ -146,7 +146,7 @@ function yada_wiki_options_page() {
 			?>		
 		</form>
 		<div style="text-align: center; width:75%;">
-			Comment options must be enabled<br />for defauts to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.
+			<?php _e('Comment options must be enabled<br />for defauts to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.', 'yada_wiki_domain') ?>
 		</div>
 		</div>			
 	</div>

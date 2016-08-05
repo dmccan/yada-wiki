@@ -5,11 +5,10 @@
     tinymce.create('tinymce.plugins.yada_wiki_toc', {  
         init : function(editor, url) {  
             editor.addButton('yada_wiki_toc', {  
-                title : 'Add Wiki TOC',  
+                title : 'Add Wiki Listing',  
                 image : url+'/img/wiki-toc.png',  
                 onclick : function() {  
 	            	$('#popup_yw_toc_dialog').dialog("open");
-                    //$("#popup_yw_category").focus();
                 }  
             });  
         }    

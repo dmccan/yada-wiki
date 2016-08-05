@@ -135,3 +135,58 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 		}
 	}
 }
+
+function yada_wiki_index_shortcode($atts) {
+	extract( shortcode_atts( array( 
+		'type' => '',
+		'columns' => '',
+	), $atts ) ); 
+	
+	$type = sanitize_text_field($type);	
+	$columns = sanitize_text_field($columns);	
+	
+	return get_yada_wiki_index($type, $columns);
+}
+
+function get_yada_wiki_index($type, $columns){
+	$theOutput = "";
+	$columns = $columns + 1;
+
+	if($type=="pages") {	
+		global $wpdb;
+		$query = "
+			SELECT 
+				$wpdb->posts.post_title, $wpdb->posts.id
+			FROM 
+				$wpdb->posts
+			WHERE 
+				$wpdb->posts.post_status = 'publish'
+				AND $wpdb->posts.post_type = 'yada_wiki'
+				AND $wpdb->posts.post_title <> 'TOC'
+			ORDER BY 
+				$wpdb->posts.post_title ASC
+		";
+		$wikiposts = $wpdb->get_results($query, OBJECT);
+		if(!empty($wikiposts)){
+			$counter = 1;
+			$theOutput = $theOutput . '<div class="ywtable">';
+			foreach($wikiposts as $wiki_post){
+				$thePermalink = get_post_permalink($wiki_post->id);
+				if($counter==1) {
+					$theOutput = $theOutput . '<div class="ywrow">';
+				}
+				$theOutput = $theOutput . '<div class="ywcolumn" data-label="Wiki Article"><a href="' . $thePermalink . '" class="wikicatlink">' . $wiki_post->post_title . '</a></div>';
+				$counter = $counter + 1;
+				if($counter==$columns) {
+					$theOutput = $theOutput . '</div>';		
+					$counter = 1;		
+				}
+			}
+			$theOutput = $theOutput . '</div>';
+		}
+		$query = "";
+		$wikiposts = "";
+	}
+	
+	return $theOutput;
+}
