@@ -2,8 +2,8 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.5.3
-Stable tag: 2.7
+Tested up to: 4.7
+Stable tag: 2.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Yada Wiki is a simple wiki for your WordPress site.
 == Description ==
 Yada Wiki provides a wiki post type, custom tags and categories, an index, and a table of contents option.  The plugin allows you to link your wiki pages together using the wiki page titles.  
 
-There are two easy to use shortcode buttons available on the editor toolbar.  
+There are two easy to use shortcode buttons available on the editor toolbar.  Rather than try to remember the shortcodes and their values, it is recommended that you use these buttons to generate the shortcodes for you.
 
 **The "Add Wiki Link" Button:**
 When you click the first button, the add wiki link button, a pop-up opens where you enter the title of the wiki page you are linking to in the "Link" text box.  You can optionally enter text into the "Show" text box that you want to show for the link, or leave that blank to just show the title.  
@@ -37,9 +37,13 @@ The second option inserts a list of the wiki pages for one of your wiki categori
 [yadawikitoc show_toc="true" category="Drinks" order="title"]
 
 *Output Index*
-The third option inserts an index of your wiki pages.  The output is in a responsive table-like grid and you can choose the number of columns.  For example:
+The third option inserts an index of your wiki pages or categories.  The output is in a responsive table-like grid and you can choose the number of columns.  For example, to output wiki pages:
 
 [yadawiki-index type="pages" columns="4"]
+
+An example for listing all wiki categories by title:
+
+[yadawiki-index type="all-categories-name" columns="3"]
 
 **Sidebar Widget:**
 There is also a Yada Wiki widget for showing the TOC page and a list of article titles for a given category in the sidebar.  Please see the FAQ section for information about using the sidebar widget. 
@@ -71,7 +75,7 @@ Yes, there is a Yada Wiki sub-menu under the main settings menu where you can en
 
 * How can I add a wiki table of contents menu in the sidebar?
 
-There is now a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more that one version of the widget active at a time.
+There is now a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more than one version of the widget active at a time.
 
 * Can I use the sidebar widget with Page Builder plugins?
 
@@ -80,6 +84,14 @@ The sidebar widget works well in regular widget areas, but does not work when em
 * Can I nest shortcodes or include multiple TOC Category shortcodes on the same page?
 
 You can include regular wiki link shortcodes in your TOC.  You can also add multiple TOC Category shortcodes to a regular wiki page.  Adding TOC shortcodes to the TOC page, or adding TOC Category shortcodes to the TOC page does not work.
+
+* Why don't I see all of the categories when I output an index of categories?
+
+Empty categories, with no wiki pages or child categories assigned, are excluded.  Also, the index of a category or all categories only goes down to one level of child categories.  
+
+* Why is there the option to sort the category index by slug?
+
+Some people may have categories that are people's names, such as book authors.  The alternate ability to sort by slug gives some flexibility for custom sorting if, for example, you use the author's last name for the slug.  
 
 * How can I display the custom tags and categories?  
 
@@ -126,6 +138,12 @@ When viewing links for users **without** the "edit posts" capacity:
 The user JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
+
+= 2.8 =
+* Added the option to output an index of a category or categories and sort them by name or slug.  The slug option allows for custom sorting. 
+* Fixed issue with uneven columns on index pages.  Thanks to @caskets for the fix.
+* Tweaks to make sure that the TOC shortcode dialog reset to defaults if used more than once on the same page.
+* Updated the FAQ with some information about outputting an index of categories.
 
 = 2.7 =
 * Added the index shortcode option which outputs a grid of wiki pages using a responsive table-like format.

@@ -139,16 +139,18 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 function yada_wiki_index_shortcode($atts) {
 	extract( shortcode_atts( array( 
 		'type' => '',
+		'category' => '',
 		'columns' => '',
 	), $atts ) ); 
 	
 	$type = sanitize_text_field($type);	
+	$category = sanitize_text_field($category);	
 	$columns = sanitize_text_field($columns);	
 	
-	return get_yada_wiki_index($type, $columns);
+	return get_yada_wiki_index($type, $category, $columns);
 }
 
-function get_yada_wiki_index($type, $columns){
+function get_yada_wiki_index($type, $category, $columns) {
 	$theOutput = "";
 	$columns = $columns + 1;
 
@@ -182,11 +184,138 @@ function get_yada_wiki_index($type, $columns){
 					$counter = 1;		
 				}
 			}
+			if ($counter!=1){
+				for ($x=1; $x<=$columns-$counter; $x++) {
+					$theOutput = $theOutput .  '<div class="ywcolumn" data-label="Wiki Article"></div>';
+				}
+				$theOutput = $theOutput . '</div>';
+			}				
 			$theOutput = $theOutput . '</div>';
 		}
 		$query = "";
 		$wikiposts = "";
 	}
+	else {
+ 		if($type=="category-name" || $type=="all-categories-name") {
+ 			$order = "name";			
+ 		}
+		else if($type=="category-slug" || $type=="all-categories-slug") {
+			$order = "slug";
+		}
+		if ($category == ""){
+			$parent = "";
+			if($type=="category-name") {
+				$type = "all-categories-name";
+			}
+			else if ($type == "category-slug") {
+				$type = "all-categories-slug";				
+			}
+		}
+		else {
+			$args = array(
+				'type'                     => 'yada_wiki',
+				'child_of'                 => 0,
+				'name'										 => $category,
+				'parent'                   => '',
+				'taxonomy'                 => 'wiki_cats',
+				'pad_counts'               => false 
+			); 
+			$parentcat = get_term_by('name',$category,'wiki_cats');
+			$parent = $parentcat->term_id;
+		}
+		
+		$args = array(
+			'type'                     => 'yada_wiki',
+			'child_of'                 => 0,
+			'parent'                   => $parent,
+			'orderby'                  => $order,
+			'order'                    => 'ASC',
+			'hide_empty'               => 1,
+			'hierarchical'             => 1,
+			'taxonomy'                 => 'wiki_cats',
+			'pad_counts'               => false 
+		); 
+		$categories = get_categories( $args );
+		if(!empty($categories)){
+			$counter = 1;
+			$theOutput = $theOutput . '<div class="ywtable">';
+			
+			// output for single category's sub-categories
+			if($type=="category-name" || $type=="category-slug") {
+				foreach($categories as $wikicat){
+					$theCatlink = get_category_link($wikicat->term_id);
+					if($counter==1) {
+						$theOutput = $theOutput . '<div class="ywrow">';
+					}
+					$theOutput = $theOutput . '<div class="ywcolumn" data-label="Wiki Category"><a href="' . $theCatlink . '" class="wikicatlink">' . $wikicat->name . '</a></div>';
+					$counter = $counter + 1;
+					if($counter==$columns) {
+						$theOutput = $theOutput . '</div>';		
+						$counter = 1;		
+					}
+				}
+			}
+			// output for all categories
+			else {
+				$categoryHierarchy = array();
+				sort_terms_hierarchically($categories, $categoryHierarchy);
+				foreach ($categoryHierarchy as $category) {
+					if($counter==1) {
+						$theOutput = $theOutput . '<div class="ywrow">';
+					}
+					if($category->parent==0) {
+						$catLink = esc_url(get_term_link($category->term_id,'wiki_cats'));
+						$categoryChild = $category->children;
+						$categoryName = $category->name;
+						$theOutput = $theOutput . '<div class="ywcolumn" data-label="Wiki Category"><a href="' . $catLink . '" class="wikicatlink">' . $categoryName . '</a>';
+						foreach ($categoryChild as $child) {
+							$catLink = esc_url(get_term_link($child->term_id,'wiki_cats'));
+							$theOutput = $theOutput . '<br>&nbsp;&nbsp;&nbsp;<a href="' . $catLink . '" class="wikicatlink">' . $child->name . '</a>';
+						}
+						$theOutput = $theOutput . '</div>';
+						$counter = $counter + 1;
+					}
+					if($counter==$columns) {
+						$theOutput = $theOutput . '</div>';
+						$counter = 1;		
+					}
+				}
+			}
+			if ($counter!=1){
+				for ($x=1; $x<=$columns-$counter; $x++) {
+					$theOutput = $theOutput . '<div class="ywcolumn" data-label="Wiki Category"></div>';
+				}
+				$theOutput = $theOutput . '</div>';
+			}				
+			$theOutput = $theOutput . '</div>';
+			
+		}
+		$categories = "";
+	}
 	
 	return $theOutput;
 }
+
+/**
+ * From: http://wordpress.stackexchange.com/questions/14652/how-to-show-a-hierarchical-terms-list - pospi
+ * Recursively sort an array of taxonomy terms hierarchically. Child categories will be
+ * placed under a 'children' member of their parent term.
+ * @param Array   $cats     taxonomy term objects to sort
+ * @param Array   $into     result array to put them in
+ * @param integer $parentId the current parent ID to put them in
+ */
+function sort_terms_hierarchically(Array &$cats, Array &$into, $parentId = 0)
+{
+    foreach ($cats as $i => $cat) {
+        if ($cat->parent == $parentId) {
+            $into[$cat->term_id] = $cat;
+            unset($cats[$i]);
+        }
+    }
+
+    foreach ($into as $topCat) {
+        $topCat->children = array();
+        sort_terms_hierarchically($cats, $topCat->children, $topCat->term_id);
+    }
+}
+

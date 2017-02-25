@@ -48,21 +48,21 @@ function yada_wiki_admin() {
 		}
 		
 		if (is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
-            foreach ( array('post.php','post-new.php') as $hook ) {
-                add_action( "admin_footer-$hook", 'yw_admin_footer' );
-            }    
+      foreach ( array('post.php','post-new.php') as $hook ) {
+          add_action( "admin_footer-$hook", 'yw_admin_footer' );
+      }    
 
-            wp_enqueue_style( "wp-jquery-ui-dialog" );
-            wp_enqueue_script( 'jquery' );
-            wp_enqueue_script( 'jquery-ui-core' );
-            wp_enqueue_script( 'jquery-ui-dialog' );
-            wp_enqueue_script( 'jquery-ui-button' );
-            wp_enqueue_script( 'jquery-ui-widget' );
-            wp_enqueue_script( 'jquery-ui-position' );
-            wp_enqueue_script( 'jquery-ui-autocomplete' );
-            wp_enqueue_script( 'yadawiki-dialog', plugin_dir_url( __FILE__ ) . '../js/yadawiki-dialog.js', array( 'wpdialogs' ), '20150815' );
+      wp_enqueue_style( "wp-jquery-ui-dialog" );
+      wp_enqueue_script( 'jquery' );
+      wp_enqueue_script( 'jquery-ui-core' );
+      wp_enqueue_script( 'jquery-ui-dialog' );
+      wp_enqueue_script( 'jquery-ui-button' );
+      wp_enqueue_script( 'jquery-ui-widget' );
+      wp_enqueue_script( 'jquery-ui-position' );
+      wp_enqueue_script( 'jquery-ui-autocomplete' );
+      wp_enqueue_script( 'yadawiki-dialog', plugin_dir_url( __FILE__ ) . '../js/yadawiki-dialog.js', array( 'wpdialogs' ), '20150815' );
 
-            add_filter( 'mce_external_plugins', 'yada_wiki_link_add_plugin' );  
+      add_filter( 'mce_external_plugins', 'yada_wiki_link_add_plugin' );  
 			add_filter( 'mce_external_plugins', 'yada_wiki_toc_add_plugin' );  
 			add_filter( 'mce_buttons', 'yada_wiki_link_register_button' );  
 			add_filter( 'mce_buttons', 'yada_wiki_toc_register_button' );  
