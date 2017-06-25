@@ -17,29 +17,29 @@ function yada_wiki_admin() {
 		// Snippet adapted from Ross McKay - http://snippets.webaware.com.au/snippets/wordpress-admin_init-hook-and-the-elusive-typenow/
 		global $typenow;
 		if ( empty($typenow) ) {
-            // try to pick it up from the query string
-            if ( !empty($_GET['post']) ) {
-                $post = get_post($_GET['post']);
-                $typenow = $post->post_type;
-                $typenow = sanitize_text_field( $typenow );
-            }
-            // try to pick it up from the quick edit AJAX post
-            elseif ( !empty($_POST['post_ID']) ) {
-                $post = get_post($_POST['post_ID']);
-                $typenow = $post->post_type;
-                $typenow = sanitize_text_field( $typenow );
-            }
-            // added by David McCan
-            elseif ( is_edit_page('new') ) {
-            	if(empty($_GET['post_type'])) {
-            		$typenow = "post";	
-            	}
-            	else {
-            		$type_test = sanitize_text_field( $_GET['post_type'] );
-            		$typenow = $type_test;
-            	}
-            }
-        }		
+      // try to pick it up from the query string
+      if ( !empty($_GET['post']) ) {
+          $post = get_post($_GET['post']);
+          $typenow = $post->post_type;
+          $typenow = sanitize_text_field( $typenow );
+      }
+      // try to pick it up from the quick edit AJAX post
+      elseif ( !empty($_POST['post_ID']) ) {
+          $post = get_post($_POST['post_ID']);
+          $typenow = $post->post_type;
+          $typenow = sanitize_text_field( $typenow );
+      }
+      // added by David McCan
+      elseif ( is_edit_page('new') ) {
+      	if(empty($_GET['post_type'])) {
+      		$typenow = "post";	
+      	}
+      	else {
+      		$type_test = sanitize_text_field( $_GET['post_type'] );
+      		$typenow = $type_test;
+      	}
+      }
+  	}		
 
 		$options = get_option( 'yada_wiki_settings' );
 		$yadaWikiEditorButtons = false;

@@ -120,7 +120,7 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 		$cat_list = get_posts( $args );
 		$cat_output = '<ul>';
 		foreach ( $cat_list as $item ) {
-			$cat_output = $cat_output . '<li><a href="'.get_page_link($item->ID).'">'.$item->post_title.'</a></li>';
+			$cat_output = $cat_output . '<li><a href="'.get_post_permalink($item->ID).'">'.$item->post_title.'</a></li>';
 		}
 		$cat_output = $cat_output . '</ul>';
 		return $cat_output;
@@ -152,6 +152,9 @@ function yada_wiki_index_shortcode($atts) {
 
 function get_yada_wiki_index($type, $category, $columns) {
 	$theOutput = "";
+	if(is_numeric($columns) == false) {
+		$columns = 1;
+	}
 	$columns = $columns + 1;
 
 	if($type=="pages") {	
@@ -202,6 +205,10 @@ function get_yada_wiki_index($type, $category, $columns) {
 		else if($type=="category-slug" || $type=="all-categories-slug") {
 			$order = "slug";
 		}
+		else {
+			$order = "name";
+		}
+		
 		if ($category == ""){
 			$parent = "";
 			if($type=="category-name") {
@@ -215,13 +222,18 @@ function get_yada_wiki_index($type, $category, $columns) {
 			$args = array(
 				'type'                     => 'yada_wiki',
 				'child_of'                 => 0,
-				'name'										 => $category,
+				'name'					   => $category,
 				'parent'                   => '',
 				'taxonomy'                 => 'wiki_cats',
 				'pad_counts'               => false 
 			); 
 			$parentcat = get_term_by('name',$category,'wiki_cats');
-			$parent = $parentcat->term_id;
+			if($parentcat) {
+				$parent = $parentcat->term_id;			
+			} 
+			else {
+				$parent = $category->term_id;				
+			}
 		}
 		
 		$args = array(

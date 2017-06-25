@@ -2,8 +2,8 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.7
-Stable tag: 2.8
+Tested up to: 4.8
+Stable tag: 2.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,9 +77,11 @@ Yes, there is a Yada Wiki sub-menu under the main settings menu where you can en
 
 There is now a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more than one version of the widget active at a time.
 
-* Can I use the sidebar widget with Page Builder plugins?
+* Does Yada Wiki work with Page Builder plugins?
 
-The sidebar widget works well in regular widget areas, but does not work when embedded using Page Builder plugins.  
+Most page builders allow you to enter shortcodes and the Yada Wiki shortcodes should work. If the shortcodes do not work then let me know and I'll take a look. The sidebar widget works well in regular widget areas, but may not work when embedded using page builders (except for Beaver Builder - see below). 
+
+The plugin has been tested and updated to work with Beaver Builder. By default Beaver Builder does not show 3rd party buttons in the Text Editor module, but you can enter the shortcodes manually. The sidebar widget works with the Beaver Builder widget module. 
 
 * Can I nest shortcodes or include multiple TOC Category shortcodes on the same page?
 
@@ -138,6 +140,11 @@ When viewing links for users **without** the "edit posts" capacity:
 The user JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
+
+= 2.9 =
+* Fixed issue of incorrect category links in certain cases by switching from the get_page_link function to the get_post_permalink function. Thanks to user neverwinter. 
+* Added default values to avoid errors. 
+* Changes and testing to work with Beaver Builder. Updated the FAQ in relation to Page Builder plugins. 
 
 = 2.8 =
 * Added the option to output an index of a category or categories and sort them by name or slug.  The slug option allows for custom sorting. 

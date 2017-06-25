@@ -86,10 +86,17 @@ class yadawiki_toc_widget extends WP_Widget {
 	}
 
 	function widget( $args, $instance ) {
-		extract( $args );
-		$title 		= apply_filters('widget_title', $instance['title']);
-		$category 	= $instance['category'];
-		$order 		= $instance['order'];
+		if( $instance) {
+			extract( $args );
+			$title 		= apply_filters('widget_title', $instance['title']);
+			$category 	= $instance['category'];
+			$order 		= $instance['order'];
+		} else {
+			$title 		= '';
+			$category 	= '';
+			$order 		= '';
+		}
+		
 		$yw_widget_content = "";
 
 		if ( $category != "" ) {
@@ -122,7 +129,9 @@ class yadawiki_toc_widget extends WP_Widget {
 				}
 			}
 		}
-		echo $before_widget;
+		if( isset($before_widget) ) {
+			echo $before_widget;
+		}
 		echo '<div class="widget-text yadawiki_toc_widget_box">';
 		echo '<div class="widget-title">';
 		if ( $title ) {
@@ -133,7 +142,7 @@ class yadawiki_toc_widget extends WP_Widget {
 		if( $category ) {
 			$yw_widget_content = '<ul class="widget_links ul">';
 			foreach ( $cat_list as $item ) {
-				$yw_widget_content = $yw_widget_content.'<li class="widget_links li"><a href="'.get_page_link($item->ID).'">'.$item->post_title.'</a></li>';
+				$yw_widget_content = $yw_widget_content.'<li class="widget_links li"><a href="'.get_post_permalink($item->ID).'">'.$item->post_title.'</a></li>';
 			}
 			$yw_widget_content = $yw_widget_content.'</ul>';
 			echo $yw_widget_content;
@@ -143,7 +152,9 @@ class yadawiki_toc_widget extends WP_Widget {
 		}
 		echo '</div>';
 		echo '</div>';
-		echo $after_widget;
+		if( isset($after_widget) ) {
+			echo $after_widget;
+		}
 	}
 }
 
