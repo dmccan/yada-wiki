@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Yada Wiki
-Plugin URI: http://www.davidmccan.com/yada-wiki
+Plugin URI: https://www.webtng.com/yada-wiki-documentation/
 Description: This plugin provides a simple wiki for your WordPress site.
-Version: 2.9
+Version: 2.9.1
 Author: David McCan
-Author URI: http://www.davidmccan.com/author/
+Author URI: https://www.webtng.com/author/
 License: GPL2
 */
 

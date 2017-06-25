@@ -118,9 +118,9 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 			'post_status' 		=> 'publish'
 		); 	
 		$cat_list = get_posts( $args );
-		$cat_output = '<ul>';
+		$cat_output = '<ul class="wiki-cat-list">';
 		foreach ( $cat_list as $item ) {
-			$cat_output = $cat_output . '<li><a href="'.get_post_permalink($item->ID).'">'.$item->post_title.'</a></li>';
+			$cat_output = $cat_output . '<li class="wiki-cat-item"><a class="wiki-cat-link" href="'.get_post_permalink($item->ID).'">'.$item->post_title.'</a></li>';
 		}
 		$cat_output = $cat_output . '</ul>';
 		return $cat_output;
