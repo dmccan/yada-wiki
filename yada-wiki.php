@@ -3,7 +3,7 @@
 Plugin Name: Yada Wiki
 Plugin URI: https://www.webtng.com/yada-wiki-documentation/
 Description: This plugin provides a simple wiki for your WordPress site.
-Version: 2.9.1
+Version: 3.0
 Author: David McCan
 Author URI: https://www.webtng.com/author/
 License: GPL2
@@ -19,22 +19,18 @@ defined('ABSPATH') or die("Access Denied.");
 * Registers the wiki taxonomy category and tags
 ************************************************/
 include('includes/register-wiki-cpt.php'); 
-add_action( 'init', 'register_yada_wiki', 0 ); 
-add_action( 'init', 'register_yada_wiki_cats', 0 ); 
-add_action( 'init', 'register_yada_wiki_tags', 0 ); 
 
 /******************************
 * On plugin activation
 *******************************/
-function yada_wiki_init() {
-	// This is done so we can flush the permalink rules when the Yada Wiki plugin is first activated.
+function yada_wiki_on_activation() {
 	register_yada_wiki();
 	register_yada_wiki_cats();
 	register_yada_wiki_tags();
 	
 	flush_rewrite_rules();
 }
-register_activation_hook( __FILE__, 'yada_wiki_init' );
+register_activation_hook( __FILE__, 'yada_wiki_on_activation');
 
 /************************************************
 * Functions to handle the wiki link shortcodes

@@ -30,7 +30,7 @@ function yada_wiki_admin() {
           $typenow = sanitize_text_field( $typenow );
       }
       // added by David McCan
-      elseif ( is_edit_page('new') ) {
+      elseif ( yada_wiki_is_edit_page('new') ) {
       	if(empty($_GET['post_type'])) {
       		$typenow = "post";	
       	}
@@ -47,7 +47,7 @@ function yada_wiki_admin() {
 			$yadaWikiEditorButtons = true;
 		}
 		
-		if (is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
+		if (yada_wiki_is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
       foreach ( array('post.php','post-new.php') as $hook ) {
           add_action( "admin_footer-$hook", 'yw_admin_footer' );
       }    
@@ -158,7 +158,7 @@ function yada_wiki_suggest_callback() {
 /********************************************************
 * Funciton from Ohad Raz - https://en.bainternet.info/
 ********************************************************/
-function is_edit_page($new_edit = null){
+function yada_wiki_is_edit_page($new_edit = null){
     global $pagenow;
     
     if (!is_admin()) return false;

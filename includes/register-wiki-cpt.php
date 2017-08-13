@@ -10,6 +10,7 @@ if ( ! function_exists('register_yada_wiki') ) {
 * Registers the wiki custom post type
 ***************************************/
 function register_yada_wiki() {
+	$slug = get_wiki_slug();
 
 	$labels = array(
 		'name'                => _x( 'Wiki Pages', 'Post Type General Name', 'yada_wiki_domain' ),
@@ -27,7 +28,7 @@ function register_yada_wiki() {
 		'not_found_in_trash'  => __( 'Not found in trash', 'yada_wiki_domain' ),
 	);
 	$rewrite = array(
-		'slug'                => 'wiki',
+		'slug'                => $slug,
 		'with_front'          => true,
 		'pages'               => true,
 		'feeds'               => true,
@@ -56,6 +57,7 @@ function register_yada_wiki() {
 	register_post_type( 'yada_wiki', $args );
 }
 }
+add_action( 'init', 'register_yada_wiki' ); 
 
 if ( ! function_exists('register_yada_wiki_cats') ) {
 
@@ -95,6 +97,7 @@ function register_yada_wiki_cats() {
 	register_taxonomy( 'wiki_cats', 'yada_wiki', $args );
 }
 }
+add_action( 'init', 'register_yada_wiki_cats' ); 
 
 if ( ! function_exists('register_yada_wiki_tags') ) {
 
@@ -133,4 +136,22 @@ function register_yada_wiki_tags() {
 	);
 	register_taxonomy( 'wiki_tags', 'yada_wiki', $args );
 }
+}
+add_action( 'init', 'register_yada_wiki_tags' ); 
+
+if ( ! function_exists('get_wiki_slug') ) {
+	function get_wiki_slug() {
+		$options = get_option( 'yada_wiki_settings' );
+		if ( isset($options['yada_wiki_textfield_wiki_slug_setting']) ) {
+			$slug = $options['yada_wiki_textfield_wiki_slug_setting'];
+			if ( ctype_alpha ($slug) ) {
+				$slug = strtolower($slug);
+			} else {
+				$slug = 'wiki';
+			}
+		} else {
+			$slug = 'wiki';
+		}
+		return $slug;
+	}
 }

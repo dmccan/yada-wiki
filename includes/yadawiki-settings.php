@@ -51,7 +51,7 @@ function yada_wiki_settings_init() {
 
 	add_settings_field( 
 		'yada_wiki_checkbox_comments_setting', 
-		__( 'On new wiki page: comments checked by default', 'yada_wiki_domain' ), 
+		__( 'On new wiki page: allow comments checked by default', 'yada_wiki_domain' ), 
 		'yada_wiki_checkbox_comments_setting_render', 
 		'pluginPage', 
 		'yada_wiki_pluginPage_section' 
@@ -59,7 +59,7 @@ function yada_wiki_settings_init() {
 
 	add_settings_field( 
 		'yada_wiki_checkbox_trackbacks_setting', 
-		__( 'On new wiki page: trackbacks and pingbacks checked by default', 'yada_wiki_domain' ), 
+		__( 'On new wiki page: allow trackbacks and pingbacks checked by default', 'yada_wiki_domain' ), 
 		'yada_wiki_checkbox_trackbacks_setting_render', 
 		'pluginPage', 
 		'yada_wiki_pluginPage_section' 
@@ -69,6 +69,14 @@ function yada_wiki_settings_init() {
 		'yada_wiki_checkbox_editor_buttons_setting', 
 		__( 'Show Wiki Shortcode Buttons for Regular Posts and Pages', 'yada_wiki_domain' ), 
 		'yada_wiki_checkbox_editor_buttons_setting_render', 
+		'pluginPage', 
+		'yada_wiki_pluginPage_section' 
+	);
+
+	add_settings_field( 
+		'yada_wiki_textfield_wiki_slug_setting', 
+		__( 'Change the Wiki Slug Used in the Permalink (see rules below)', 'yada_wiki_domain' ), 
+		'yada_wiki_textfield_wiki_slug_setting_render', 
 		'pluginPage', 
 		'yada_wiki_pluginPage_section' 
 	);
@@ -123,14 +131,35 @@ function yada_wiki_checkbox_editor_buttons_setting_render() {
 
 }
 
+/***************************************************
+* Change the Wiki permalink slug
+***************************************************/
+function yada_wiki_textfield_wiki_slug_setting_render() { 
+
+	$options = get_option( 'yada_wiki_settings' );
+	if ( isset($options['yada_wiki_textfield_wiki_slug_setting']) ) {
+		$option = $options['yada_wiki_textfield_wiki_slug_setting'];	
+	} else {
+		$option = "wiki";
+	}
+	?>
+	<input type='text' name='yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]' value='<?php echo $option; ?>'>
+	<?php
+
+}
+
 /******************************
 * Process settings
 *******************************/
 function yada_wiki_settings_section_callback() { 
+    if (!current_user_can('manage_options')) {
+        wp_die('Unauthorized user');
+    }
+	flush_rewrite_rules();
 }
 
 /******************************
-* Rengder settings form
+* Render settings form
 *******************************/
 function yada_wiki_options_page() { 
 
@@ -146,15 +175,29 @@ function yada_wiki_options_page() {
 			?>		
 		</form>
 		<div style="text-align: center; width:75%;">
-			<?php _e('Comment options must be enabled<br />for defauts to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.', 'yada_wiki_domain') ?>
+			<?php _e('Comment options must be enabled<br />for defauts to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.<br /><br />The Wiki Slug should only contain lower case letters.<br />', 'yada_wiki_domain') ?>
 		</div>
 		</div>			
 	</div>
 	<script type="text/javascript">
+		var badSlugMessage = "<?php _e('Only lower case letters are allowed', 'yada_wiki_domain') ?>";
 		function doOptionsCheck() {
 			if ( document.getElementsByName('yada_wiki_settings[yada_wiki_checkbox_comment_options]')[0].checked == false ) {
 				document.getElementsByName('yada_wiki_settings[yada_wiki_checkbox_comments_setting]')[0].checked = false;
 				document.getElementsByName('yada_wiki_settings[yada_wiki_checkbox_trackbacks_setting]')[0].checked = false;
+			}
+			if ( document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value == "" ) {
+				document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value = "wiki";
+			} else {
+				var tempSlug = document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value;
+				tempSlug = tempSlug.toLowerCase();
+				var lowerCaseLetters = /^[a-z]+$/;
+				if(lowerCaseLetters.test(tempSlug) == false) {
+					alert(badSlugMessage);
+					document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value = "wiki";
+				} else {
+					document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value = tempSlug;
+				}
 			}
 		}
 	</script>

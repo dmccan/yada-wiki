@@ -3,7 +3,7 @@ Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 4.8
-Stable tag: 2.9.1
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,11 @@ An example for listing all wiki categories by title:
 
 **Sidebar Widget:**
 There is also a Yada Wiki widget for showing the TOC page and a list of article titles for a given category in the sidebar.  Please see the FAQ section for information about using the sidebar widget. 
+
+**Documentation:**
+Documentation is available at https://www.webtng.com/yada-wiki-documentation/
+
+The FAQs below also have good information.
 
 **Video Walk-through:**
 This video provides a walk-though of all of the features:
@@ -113,7 +118,7 @@ The plugin is not compatible with multisite.
 
 = Can I use custom permalinks? =
 
-The wiki links are based on links to wiki page titles, so it is expected that you will use the "Post name" type of permalink structure.  
+The wiki links are based on links to wiki page titles, so it is expected that you will use the "Post name" type of permalink structure.  You can change the URL slug for links from 'wiki' to another word of your choice on the Yada Wiki settings page. 
 
 = How can I change the colors of the wiki links? =
 
@@ -145,16 +150,20 @@ The TOC Output Wiki Category shortcode outputs an unordered list.
 
 == Acknowledgements ==
 
-The user JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
+The user @JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
 
+= 3.0 =
+* Added the ability to change the plugin URL slug from the settings page. @Earl_D and others have suggested this. 
+* Fix: Added function name prefix to avoid conflict with another plugin. Thanks to @wealthgizmo for pointing out this issue. 
+
 = 2.9.1 =
-* Added classes for TOC Category shortcode output. Thanks to Earl_D for the suggestion. 
+* Added classes for TOC Category shortcode output. Thanks to @Earl_D for the suggestion. 
 * Formatted the FAQ section of the readme. 
 
 = 2.9 =
-* Fixed issue of incorrect category links in certain cases by switching from the get_page_link function to the get_post_permalink function. Thanks to user neverwinter. 
+* Fixed issue of incorrect category links in certain cases by switching from the get_page_link function to the get_post_permalink function. Thanks to user @neverwinter. 
 * Added default values to avoid errors. 
 * Changes and testing to work with Beaver Builder. Updated the FAQ in relation to Page Builder plugins. 
 
