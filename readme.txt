@@ -2,8 +2,8 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.8
-Stable tag: 3.0
+Tested up to: 4.9.8
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,10 @@ The TOC Output Wiki Category shortcode outputs an unordered list.
 The user @JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
+
+= 3.1 =
+* A step towards an Object Oriented version. 
+* Added support for the Rest API so that it is possible to use Gutenberg. There is currently no other support for Gutenberg.
 
 = 3.0 =
 * Added the ability to change the plugin URL slug from the settings page. @Earl_D and others have suggested this. 
