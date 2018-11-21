@@ -2,7 +2,7 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 4.9.8
+Tested up to: 5.0
 Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -147,6 +147,11 @@ The TOC Output Wiki Category shortcode outputs an unordered list.
   * The "ul" tag has a class of "wiki-cat-list" 
   * The "li" tag has a class of "wiki-cat-item" 
   * The link to the category in the "li" tag has the class of "wiki-cat-link"
+  
+= Is the plugin compatible with Gutenberg? Can I use it with the Gutenberg editor? =
+
+As of Yada Wiki version 3.1, the Gutenberg editor is disabled on Wiki pages by default. There is a setting to enable it, but there are no Wiki blocks and no buttons to make it easier to add shortcodes.  
+  
 
 == Acknowledgements ==
 
@@ -156,7 +161,7 @@ The user @JulianSMoore has been very helpful in suggesting improvements and revi
 
 = 3.1 =
 * A step towards an Object Oriented version. 
-* Added support for the Rest API so that it is possible to use Gutenberg. There is currently no other support for Gutenberg.
+* Added support for the Rest API so that it is possible to use Gutenberg. Added a setting to enable Gutenberg if desired. There is currently no other support for Gutenberg.
 
 = 3.0 =
 * Added the ability to change the plugin URL slug from the settings page. @Earl_D and others have suggested this. 

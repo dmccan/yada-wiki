@@ -223,7 +223,21 @@ final class YadaWikiPlugin {
 			add_action( 'wp_ajax_yada_wiki_suggest', 'yada_wiki_suggest_callback' );
 			add_action( 'admin_menu', 'yada_wiki_add_admin_menu' );
 			add_action( 'admin_init', 'yada_wiki_settings_init' );
+			// Handle Gutenberg
+			if ( version_compare( $GLOBALS['wp_version'], '5.0-beta', '>' ) ) {
+				// Gutenberg is default
+				add_filter( 'use_block_editor_for_post_type', 'yada_wiki_use_gutenberg_block', 10, 2 );
+			} else {
+				// Is the Gutenberg plugin installed?
+				if ( has_filter( 'replace_editor', 'gutenberg_init' ) ) {
+					// Gutenberg is installed and activated.
+					add_filter( 'gutenberg_can_edit_post_type', 'yada_wiki_use_classic_editor', 10, 2 );
+				}				
+			}
+			add_filter( 'wp_insert_post_data', 'yada_wiki_set_comment_defaults' );
 		}		
+		
+		add_action('widgets_init', 'yadawiki_toc_widget_register_widgets');		
 
 		// Register activation hook.
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );

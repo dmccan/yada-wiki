@@ -65,13 +65,32 @@ function yada_wiki_set_comment_defaults( $data ) {
     return $data;
 }
 
-function yada_wiki_use_gutenberg($can_edit, $post_type){
-  if($post_type == 'yada_wiki'){
-    $can_edit = true;
-  }
-  return $can_edit;
+function yada_wiki_use_gutenberg_block ( $can_edit, $post_type ) { 
+
+	if ($post_type == 'yada_wiki') {
+		$options = get_option( 'yada_wiki_settings' );
+		$useGutenberg = isset($options['yada_wiki_checkbox_use_gutenberg_setting']) && !empty($options['yada_wiki_checkbox_use_gutenberg_setting']) ? true : false;
+		if ( $useGutenberg ) {
+			$can_edit = true;
+		} else {
+			$can_edit = false;
+		}		
+	} 
+	return $can_edit;
 }
 
-add_filter( 'wp_insert_post_data', 'yada_wiki_set_comment_defaults' );
-//add_filter( 'gutenberg_can_edit_post_type', 'yada_wiki_use_gutenberg', 10, 2 );
+function yada_wiki_use_classic_editor ( $can_edit, $post_type ) { 
+
+	if ($post_type == 'yada_wiki') {
+		$options = get_option( 'yada_wiki_settings' );
+		$useGutenberg = isset($options['yada_wiki_checkbox_use_gutenberg_setting']) && !empty($options['yada_wiki_checkbox_use_gutenberg_setting']) ? true : false;
+		if ( $useGutenberg == false) {
+			//remove_filter( 'replace_editor', 'gutenberg_init' );
+			$can_edit = false;
+		} else {
+			$can_edit = true;
+		}		
+	} 
+	return $can_edit;
+}
 ?>

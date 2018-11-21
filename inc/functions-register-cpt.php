@@ -37,7 +37,7 @@ if ( ! function_exists('register_yada_wiki') ) {
 			'label'               => __( 'yada_wiki', 'yada_wiki_domain' ),
 			'description'         => __( 'A wiki custom post type', 'yada_wiki_domain' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'publicize', 'wpcom-markdown' ),
+			'supports'            => array( 'title', 'editor', 'author', 'thumbnail', 'revisions', 'publicize', 'wpcom-markdown', 'custom-fields' ),
 			'taxonomies'          => array( 'wiki_tags', 'wiki_cats' ),
 			'hierarchical'        => false,
 			'public'              => true,

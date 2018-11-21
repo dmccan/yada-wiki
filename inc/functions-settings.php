@@ -81,6 +81,13 @@ function yada_wiki_settings_init() {
 		'yada_wiki_pluginPage_section' 
 	);
 
+	add_settings_field( 
+		'yada_wiki_checkbox_use_gutenberg_setting', 
+		__( 'Use the new Gutenberg Editor for Wiki Pages', 'yada_wiki_domain' ), 
+		'yada_wiki_checkbox_use_gutenberg_setting_render', 
+		'pluginPage', 
+		'yada_wiki_pluginPage_section' 
+	);
 }
 
 /************************************
@@ -146,6 +153,17 @@ function yada_wiki_textfield_wiki_slug_setting_render() {
 	<input type='text' name='yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]' value='<?php echo $option; ?>'>
 	<?php
 
+}
+
+/***************************************************
+* Use Gutenberg Editor for Wiki Pages
+***************************************************/
+function yada_wiki_checkbox_use_gutenberg_setting_render() { 
+
+	$options = get_option( 'yada_wiki_settings' );
+	?>
+	<input type='checkbox' name='yada_wiki_settings[yada_wiki_checkbox_use_gutenberg_setting]' <?php checked( isset($options['yada_wiki_checkbox_use_gutenberg_setting']), 1 ); ?> value='1'>
+	<?php
 }
 
 /******************************
