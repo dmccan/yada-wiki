@@ -3,11 +3,11 @@
  * Plugin Name: Yada Wiki
  * Plugin URI:  https://www.webtng.com/yada-wiki-documentation
  * Description: This plugin provides a simple wiki for your WordPress site.
- * Version:     3.1
+ * Version:     3.2
  * Author:      David McCan
  * Author URI:  https://www.webtng.com
- * Text Domain: yada-wiki
- * Domain Path: /languages
+ * Text Domain: yada_wiki_domain
+ * Domain Path: /lang
  *
  * Yada Wiki provides a wiki post type, custom tags and categories, an index, and a table of contents option.
  * The plugin allows you to link your wiki pages together using the wiki page titles.
@@ -20,9 +20,9 @@
  * even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  *
  * @package   YadaWiki
- * @version   3.1
+ * @version   3.2
  * @author    David McCan <dcmccan@gmail.com>
- * @copyright Copyright (c) 2015-2018, David McCan
+ * @copyright Copyright (c) 2015-2019, David McCan
  * @link      https://www.webtng.com/yada-wiki-documentation
  * @license   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
  */
@@ -126,7 +126,7 @@ final class YadaWikiPlugin {
 	 * @return void
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, __( 'Whoah, partner!', 'yada_wiki_domain' ), '3.1' );
+		_doing_it_wrong( __FUNCTION__, __( 'Whoah, partner!', 'yada_wiki_domain' ), '3.2' );
 	}
 
 	/**
@@ -137,7 +137,7 @@ final class YadaWikiPlugin {
 	 * @return void
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, __( 'Whoah, partner!', 'yada_wiki_domain' ), '3.1' );
+		_doing_it_wrong( __FUNCTION__, __( 'Whoah, partner!', 'yada_wiki_domain' ), '3.2' );
 	}
 
 	/**
@@ -148,7 +148,7 @@ final class YadaWikiPlugin {
 	 * @return void
 	 */
 	public function __call( $method = '', $args = array() ) {
-		_doing_it_wrong( "Yada_Wiki::{$method}", __( 'Method does not exist.', 'yada_wiki_domain' ), '3.1' );
+		_doing_it_wrong( "Yada_Wiki::{$method}", __( 'Method does not exist.', 'yada_wiki_domain' ), '3.2' );
 		unset( $method, $args );
 		return null;
 	}
@@ -252,7 +252,7 @@ final class YadaWikiPlugin {
 	 */
 	public function i18n() {
 
-		load_plugin_textdomain( 'yada-wiki', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'lang' );
+		load_plugin_textdomain( 'yada_wiki_domain', false, trailingslashit( dirname( plugin_basename( __FILE__ ) ) ) . 'lang' );
 	}
 
 	/**

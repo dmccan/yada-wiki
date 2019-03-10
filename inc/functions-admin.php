@@ -110,8 +110,8 @@ if ( is_admin() ) {
     * http://jtmorris.net/2014/07/using-jquery-and-jquery-ui-in-tinymce-dialog-iframe/#comment-6290
     ************************************************************************************************/
     function yw_admin_footer() {
-        include('yadawiki-dialog-link.html'); 
-        include('yadawiki-dialog-toc.html'); 
+        include('yadawiki-dialog-link.php'); 
+        include('yadawiki-dialog-toc.php'); 
     }
         
     function yada_wiki_suggest_callback() {

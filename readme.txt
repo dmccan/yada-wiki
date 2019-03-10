@@ -2,8 +2,8 @@
 Contributors: dmccan
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
-Tested up to: 5.0
-Stable tag: 3.1
+Tested up to: 5.2
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,10 @@ This video provides a walk-though of all of the features:
 
 https://youtu.be/yixVePH3IpA
 
+** Translations **
+The plugin is available in:
+* English
+* Spanish
 
 == Installation ==
 You can install the Yada Wiki plugin either via the WordPress.org plugin directory or by uploading the files to your server.  Once the plugin is installed, you can activate the plugin through the Plugins menu in WordPress.
@@ -158,6 +162,10 @@ As of Yada Wiki version 3.1, the Gutenberg editor is disabled on Wiki pages by d
 The user @JulianSMoore has been very helpful in suggesting improvements and reviewing changes. 
 
 == Changelog ==
+
+= 3.2 =
+* Added ability to translate Yada wiki
+* Added Spanish translation
 
 = 3.1 =
 * A step towards an Object Oriented version. 

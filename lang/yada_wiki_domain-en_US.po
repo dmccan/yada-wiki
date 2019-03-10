@@ -1,14 +1,13 @@
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: Yada Wiki\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-03-10 22:25+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: \n"
-"Language: \n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"PO-Revision-Date: 2019-03-10 22:26+0000\n"
+"Last-Translator: David <dcmccan@gmail.com>\n"
+"Language-Team: English (United States)\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,225 +16,225 @@ msgstr ""
 
 #: yada-wiki.php:129 yada-wiki.php:140
 msgid "Whoah, partner!"
-msgstr ""
+msgstr "Whoah, partner!"
 
 #: yada-wiki.php:151
 msgid "Method does not exist."
-msgstr ""
+msgstr "Method does not exist."
 
 #: inc/functions-register-cpt.php:16
 msgctxt "Post Type General Name"
 msgid "Wiki Pages"
-msgstr ""
+msgstr "Wiki Pages"
 
 #: inc/functions-register-cpt.php:17
 msgctxt "Post Type Singular Name"
 msgid "Wiki"
-msgstr ""
+msgstr "Wiki"
 
 #: inc/functions-register-cpt.php:18
 msgid "Wiki Pages"
-msgstr ""
+msgstr "Wiki Pages"
 
 #: inc/functions-register-cpt.php:19
 msgid "Parent:"
-msgstr ""
+msgstr "Parent:"
 
 #: inc/functions-register-cpt.php:20
 msgid "All Wiki Pages"
-msgstr ""
+msgstr "All Wiki Pages"
 
 #: inc/functions-register-cpt.php:21
 msgid "View"
-msgstr ""
+msgstr "View"
 
 #: inc/functions-register-cpt.php:22
 msgid "Add New Wiki Page"
-msgstr ""
+msgstr "Add New Wiki Page"
 
 #: inc/functions-register-cpt.php:23
 msgid "Add New"
-msgstr ""
+msgstr "Add New"
 
 #: inc/functions-register-cpt.php:24
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: inc/functions-register-cpt.php:25
 msgid "Update"
-msgstr ""
+msgstr "Update"
 
 #: inc/functions-register-cpt.php:26
 msgid "Search Wiki"
-msgstr ""
+msgstr "Search Wiki"
 
 #: inc/functions-register-cpt.php:27
 msgid "Not found"
-msgstr ""
+msgstr "Not found"
 
 #: inc/functions-register-cpt.php:28
 msgid "Not found in trash"
-msgstr ""
+msgstr "Not found in trash"
 
 #: inc/functions-register-cpt.php:37
 msgid "yada_wiki"
-msgstr ""
+msgstr "yada_wiki"
 
 #: inc/functions-register-cpt.php:38
 msgid "A wiki custom post type"
-msgstr ""
+msgstr "A wiki custom post type"
 
 #: inc/functions-register-cpt.php:71
 msgctxt "Taxonomy General Name"
 msgid "Wiki Categories"
-msgstr ""
+msgstr "Wiki Categories"
 
 #: inc/functions-register-cpt.php:72
 msgctxt "Taxonomy Singular Name"
 msgid "Wiki Category"
-msgstr ""
+msgstr "Wiki Category"
 
 #: inc/functions-register-cpt.php:73
 msgid "Wiki Categories"
-msgstr ""
+msgstr "Wiki Categories"
 
 #: inc/functions-register-cpt.php:74
 msgid "All Wiki Categories"
-msgstr ""
+msgstr "All Wiki Categories"
 
 #: inc/functions-register-cpt.php:75
 msgid "Parent Wiki Category"
-msgstr ""
+msgstr "Parent Wiki Category"
 
 #: inc/functions-register-cpt.php:76
 msgid "Parent Wiki Category:"
-msgstr ""
+msgstr "Parent Wiki Category:"
 
 #: inc/functions-register-cpt.php:77
 msgid "New Wiki Category"
-msgstr ""
+msgstr "New Wiki Category"
 
 #: inc/functions-register-cpt.php:78
 msgid "Add New Wiki Category"
-msgstr ""
+msgstr "Add New Wiki Category"
 
 #: inc/functions-register-cpt.php:79
 msgid "Edit Wiki Category"
-msgstr ""
+msgstr "Edit Wiki Category"
 
 #: inc/functions-register-cpt.php:80
 msgid "Update Wiki Category"
-msgstr ""
+msgstr "Update Wiki Category"
 
 #: inc/functions-register-cpt.php:81
 msgid "Separate categories with commas"
-msgstr ""
+msgstr "Separate categories with commas"
 
 #: inc/functions-register-cpt.php:82
 msgid "Search Wiki Categories"
-msgstr ""
+msgstr "Search Wiki Categories"
 
 #: inc/functions-register-cpt.php:83
 msgid "Add or remove Wiki Category"
-msgstr ""
+msgstr "Add or remove Wiki Category"
 
 #: inc/functions-register-cpt.php:84
 msgid "Choose from the most used Wiki Categories"
-msgstr ""
+msgstr "Choose from the most used Wiki Categories"
 
 #: inc/functions-register-cpt.php:85
 msgid "Wiki Category Not Found"
-msgstr ""
+msgstr "Wiki Category Not Found"
 
 #: inc/functions-register-cpt.php:111
 msgctxt "Taxonomy General Name"
 msgid "Wiki Tags"
-msgstr ""
+msgstr "Wiki Tags"
 
 #: inc/functions-register-cpt.php:112
 msgctxt "Taxonomy Singular Name"
 msgid "Wiki Tag"
-msgstr ""
+msgstr "Wiki Tag"
 
 #: inc/functions-register-cpt.php:113
 msgid "Wiki Tags"
-msgstr ""
+msgstr "Wiki Tags"
 
 #: inc/functions-register-cpt.php:114
 msgid "All Wiki Tags"
-msgstr ""
+msgstr "All Wiki Tags"
 
 #: inc/functions-register-cpt.php:115
 msgid "Parent Wiki Tag"
-msgstr ""
+msgstr "Parent Wiki Tag"
 
 #: inc/functions-register-cpt.php:116
 msgid "Parent Wiki Tag:"
-msgstr ""
+msgstr "Parent Wiki Tag:"
 
 #: inc/functions-register-cpt.php:117
 msgid "New Wiki Tag"
-msgstr ""
+msgstr "New Wiki Tag"
 
 #: inc/functions-register-cpt.php:118
 msgid "Add New Wiki Tag"
-msgstr ""
+msgstr "Add New Wiki Tag"
 
 #: inc/functions-register-cpt.php:119
 msgid "Edit Wiki Tag"
-msgstr ""
+msgstr "Edit Wiki Tag"
 
 #: inc/functions-register-cpt.php:120
 msgid "Update Wiki Tag"
-msgstr ""
+msgstr "Update Wiki Tag"
 
 #: inc/functions-register-cpt.php:121
 msgid "Separate tags with commas"
-msgstr ""
+msgstr "Separate tags with commas"
 
 #: inc/functions-register-cpt.php:122
 msgid "Search Wiki Tags"
-msgstr ""
+msgstr "Search Wiki Tags"
 
 #: inc/functions-register-cpt.php:123
 msgid "Add or remove Wiki Tags"
-msgstr ""
+msgstr "Add or remove Wiki Tags"
 
 #: inc/functions-register-cpt.php:124
 msgid "Choose from the most used Wiki Tags"
-msgstr ""
+msgstr "Choose from the most used Wiki Tags"
 
 #: inc/functions-register-cpt.php:125
 msgid "Wiki Tag Not Found"
-msgstr ""
+msgstr "Wiki Tag Not Found"
 
 #: inc/functions-settings.php:39
 msgid "Wiki Options"
-msgstr ""
+msgstr "Wiki Options"
 
 #: inc/functions-settings.php:46
 msgid "Enable Comment Options"
-msgstr ""
+msgstr "Enable Comment Options"
 
 #: inc/functions-settings.php:54
 msgid "On new wiki page: allow comments checked by default"
-msgstr ""
+msgstr "On new wiki page: allow comments checked by default"
 
 #: inc/functions-settings.php:62
 msgid "On new wiki page: allow trackbacks and pingbacks checked by default"
-msgstr ""
+msgstr "On new wiki page: allow trackbacks and pingbacks checked by default"
 
 #: inc/functions-settings.php:70
 msgid "Show Wiki Shortcode Buttons for Regular Posts and Pages"
-msgstr ""
+msgstr "Show Wiki Shortcode Buttons for Regular Posts and Pages"
 
 #: inc/functions-settings.php:78
 msgid "Change the Wiki Slug Used in the Permalink (see rules below)"
-msgstr ""
+msgstr "Change the Wiki Slug Used in the Permalink (see rules below)"
 
 #: inc/functions-settings.php:86
 msgid "Use the new Gutenberg Editor for Wiki Pages"
-msgstr ""
+msgstr "Use the new Gutenberg Editor for Wiki Pages"
 
 #: inc/functions-settings.php:196
 msgid ""
@@ -243,153 +242,158 @@ msgid ""
 "Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
 "<br />The Wiki Slug should only contain lower case letters.<br />"
 msgstr ""
+"Comment options must be enabled<br />for defauts to be set.<br /><br />"
+"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
+"<br />The Wiki Slug should only contain lower case letters.<br />"
 
 #: inc/functions-settings.php:201
 msgid "Only lower case letters are allowed"
-msgstr ""
+msgstr "Only lower case letters are allowed"
 
 #: inc/functions-widgets.php:13
 msgid "Yada Wiki TOC"
-msgstr ""
+msgstr "Yada Wiki TOC"
 
 #: inc/functions-widgets.php:42
 msgid "Title:"
-msgstr ""
+msgstr "Title:"
 
 #: inc/functions-widgets.php:46
 msgid "Category (optional):"
-msgstr ""
+msgstr "Category (optional):"
 
 #: inc/functions-widgets.php:53
 msgid "Select Category"
-msgstr ""
+msgstr "Select Category"
 
 #: inc/functions-widgets.php:63
 msgid "Order (used only if category selected):"
-msgstr ""
+msgstr "Order (used only if category selected):"
 
 #: inc/functions-widgets.php:70
 msgid "Select Order"
-msgstr ""
+msgstr "Select Order"
 
 #: inc/functions-widgets.php:73 inc/yadawiki-dialog-toc.php:77
 msgid "title"
-msgstr ""
+msgstr "title"
 
 #: inc/functions-widgets.php:73 inc/yadawiki-dialog-toc.php:77
 msgid "Title A-Z"
-msgstr ""
+msgstr "Title A-Z"
 
 #: inc/functions-widgets.php:74 inc/yadawiki-dialog-toc.php:78
 msgid "date"
-msgstr ""
+msgstr "date"
 
 #: inc/functions-widgets.php:74 inc/yadawiki-dialog-toc.php:78
 msgid "Creation Date"
-msgstr ""
+msgstr "Creation Date"
 
 #: inc/yadawiki-dialog-link.php:27
 msgid "Yada Wiki Link"
-msgstr ""
+msgstr "Yada Wiki Link"
 
 #: inc/yadawiki-dialog-link.php:31
 msgid "Link:"
-msgstr ""
+msgstr "Link:"
 
 #: inc/yadawiki-dialog-link.php:34
 msgid "(The title of the page to which you are linking.)"
-msgstr ""
+msgstr "(The title of the page to which you are linking.)"
 
 #: inc/yadawiki-dialog-link.php:38
 msgid "Show:"
-msgstr ""
+msgstr "Show:"
 
 #: inc/yadawiki-dialog-link.php:41
 msgid "(If blank then the value in the Link field is used.)"
-msgstr ""
+msgstr "(If blank then the value in the Link field is used.)"
 
 #: inc/yadawiki-dialog-link.php:46 inc/yadawiki-dialog-toc.php:101
 msgid "Insert Shortcode"
-msgstr ""
+msgstr "Insert Shortcode"
 
 #: inc/yadawiki-dialog-toc.php:21
 msgid "Yada Wiki Listing"
-msgstr ""
+msgstr "Yada Wiki Listing"
 
 #: inc/yadawiki-dialog-toc.php:25
 msgid "Listing Type:"
-msgstr ""
+msgstr "Listing Type:"
 
 #: inc/yadawiki-dialog-toc.php:28
 msgid "Output TOC Page"
-msgstr ""
+msgstr "Output TOC Page"
 
 #: inc/yadawiki-dialog-toc.php:29
 msgid "Output Wiki Category"
-msgstr ""
+msgstr "Output Wiki Category"
 
 #: inc/yadawiki-dialog-toc.php:30
 msgid "Output Index"
-msgstr ""
+msgstr "Output Index"
 
 #: inc/yadawiki-dialog-toc.php:35
 msgid "Index of:"
-msgstr ""
+msgstr "Index of:"
 
 #: inc/yadawiki-dialog-toc.php:38
 msgid "Pages"
-msgstr ""
+msgstr "Pages"
 
 #: inc/yadawiki-dialog-toc.php:39
 msgid "A Category By Name"
-msgstr ""
+msgstr "A Category By Name"
 
 #: inc/yadawiki-dialog-toc.php:40
 msgid "A Category By Slug"
-msgstr ""
+msgstr "A Category By Slug"
 
 #: inc/yadawiki-dialog-toc.php:41
 msgid "All Categories By Name"
-msgstr ""
+msgstr "All Categories By Name"
 
 #: inc/yadawiki-dialog-toc.php:42
 msgid "All Categories By Slug"
-msgstr ""
+msgstr "All Categories By Slug"
 
 #: inc/yadawiki-dialog-toc.php:47
 msgid "Category (req):"
-msgstr ""
+msgstr "Category (req):"
 
 #: inc/yadawiki-dialog-toc.php:73
 msgid "Order:"
-msgstr ""
+msgstr "Order:"
 
 #: inc/yadawiki-dialog-toc.php:83
 msgid "Columns:"
-msgstr ""
+msgstr "Columns:"
 
 #: inc/yadawiki-dialog-toc.php:95
 msgid ""
 "Use this option to output the contents of the TOC page into another wiki "
 "page."
 msgstr ""
+"Use this option to output the contents of the TOC page into another wiki "
+"page."
 
 #. Name of the plugin
 msgid "Yada Wiki"
-msgstr ""
+msgstr "Yada Wiki"
 
 #. Description of the plugin
 msgid "This plugin provides a simple wiki for your WordPress site."
-msgstr ""
+msgstr "This plugin provides a simple wiki for your WordPress site."
 
 #. URI of the plugin
 msgid "https://www.webtng.com/yada-wiki-documentation"
-msgstr ""
+msgstr "https://www.webtng.com/yada-wiki-documentation"
 
 #. Author of the plugin
 msgid "David McCan"
-msgstr ""
+msgstr "David McCan"
 
 #. Author URI of the plugin
 msgid "https://www.webtng.com"
-msgstr ""
+msgstr "https://www.webtng.com"

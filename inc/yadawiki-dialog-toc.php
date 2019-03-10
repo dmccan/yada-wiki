@@ -18,7 +18,7 @@
 	cursor: pointer;
 }    
 </style>
-<div id="popup_yw_toc_dialog" title="Yada Wiki Listing" class="popup_dialog">
+<div id="popup_yw_toc_dialog" title="<?php _e("Yada Wiki Listing", 'yada_wiki_domain'); ?>" class="popup_dialog">
     <form id="popup_yw_toc_form">
         <table class="form-table">
             <tr>
@@ -35,11 +35,11 @@
                 <th><label for="popup_yw_output"><?php _e("Index of:", 'yada_wiki_domain'); ?></label></th>
                 <td align="right">
 									<select id="popup_yw_output" name="popup_yw_output" style="width:170px" onchange="javascript:doYWOutput();">
-										<option value="pages" selected>Pages</option>
-										<option value="category-name">A Category By Name</option>
-										<option value="category-slug">A Category By Slug</option>
-										<option value="all-categories-name">All Categories By Name</option>
-										<option value="all-categories-slug">All Categories By Slug</option>
+										<option value="pages" selected><?php _e('Pages', 'yada_wiki_domain'); ?></option>
+										<option value="category-name"><?php _e('A Category By Name', 'yada_wiki_domain'); ?></option>
+										<option value="category-slug"><?php _e('A Category By Slug', 'yada_wiki_domain'); ?></option>
+										<option value="all-categories-name"><?php _e('All Categories By Name', 'yada_wiki_domain'); ?></option>
+										<option value="all-categories-slug"><?php _e('All Categories By Slug', 'yada_wiki_domain'); ?></option>
 									</select>
                 </td>
             </tr>

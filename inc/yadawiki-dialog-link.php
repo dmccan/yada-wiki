@@ -24,7 +24,7 @@
 	width: 250px;
 } 
 </style>
-<div id="popup_yw_dialog" title="Yada Wiki Link" class="popup_dialog">
+<div id="popup_yw_dialog" title="<?php _e("Yada Wiki Link", 'yada_wiki_domain'); ?>" class="popup_dialog">
     <form id="popup_yw_form">
         <table class="form-table">
             <tr>
