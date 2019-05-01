@@ -164,8 +164,10 @@ The user @JulianSMoore has been very helpful in suggesting improvements and revi
 == Changelog ==
 
 = 3.2 =
-* Added ability to translate Yada wiki
+* Added ability to translate Yada Wiki
 * Added Spanish translation
+* Added REST API support for Wiki Categories and Tags
+* Added placeholder output message for TOC tag when no TOC page is found or it is empty. 
 
 = 3.1 =
 * A step towards an Object Oriented version. 

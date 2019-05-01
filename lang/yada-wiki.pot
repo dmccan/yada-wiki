@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yada Wiki\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-10 22:25+0000\n"
+"POT-Creation-Date: 2019-05-01 19:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -21,6 +21,18 @@ msgstr ""
 
 #: yada-wiki.php:151
 msgid "Method does not exist."
+msgstr ""
+
+#: inc/functions-public.php:131 inc/functions-widgets.php:138
+msgid "A wiki article with the title of TOC was not found."
+msgstr ""
+
+#: inc/functions-public.php:141 inc/functions-widgets.php:132
+msgid "The TOC has no content."
+msgstr ""
+
+#: inc/functions-public.php:144 inc/functions-widgets.php:135
+msgid "The TOC has not been published."
 msgstr ""
 
 #: inc/functions-register-cpt.php:16
@@ -147,65 +159,65 @@ msgstr ""
 msgid "Wiki Category Not Found"
 msgstr ""
 
-#: inc/functions-register-cpt.php:111
+#: inc/functions-register-cpt.php:112
 msgctxt "Taxonomy General Name"
 msgid "Wiki Tags"
 msgstr ""
 
-#: inc/functions-register-cpt.php:112
+#: inc/functions-register-cpt.php:113
 msgctxt "Taxonomy Singular Name"
 msgid "Wiki Tag"
 msgstr ""
 
-#: inc/functions-register-cpt.php:113
+#: inc/functions-register-cpt.php:114
 msgid "Wiki Tags"
 msgstr ""
 
-#: inc/functions-register-cpt.php:114
+#: inc/functions-register-cpt.php:115
 msgid "All Wiki Tags"
 msgstr ""
 
-#: inc/functions-register-cpt.php:115
+#: inc/functions-register-cpt.php:116
 msgid "Parent Wiki Tag"
 msgstr ""
 
-#: inc/functions-register-cpt.php:116
+#: inc/functions-register-cpt.php:117
 msgid "Parent Wiki Tag:"
 msgstr ""
 
-#: inc/functions-register-cpt.php:117
+#: inc/functions-register-cpt.php:118
 msgid "New Wiki Tag"
 msgstr ""
 
-#: inc/functions-register-cpt.php:118
+#: inc/functions-register-cpt.php:119
 msgid "Add New Wiki Tag"
 msgstr ""
 
-#: inc/functions-register-cpt.php:119
+#: inc/functions-register-cpt.php:120
 msgid "Edit Wiki Tag"
 msgstr ""
 
-#: inc/functions-register-cpt.php:120
+#: inc/functions-register-cpt.php:121
 msgid "Update Wiki Tag"
 msgstr ""
 
-#: inc/functions-register-cpt.php:121
+#: inc/functions-register-cpt.php:122
 msgid "Separate tags with commas"
 msgstr ""
 
-#: inc/functions-register-cpt.php:122
+#: inc/functions-register-cpt.php:123
 msgid "Search Wiki Tags"
 msgstr ""
 
-#: inc/functions-register-cpt.php:123
+#: inc/functions-register-cpt.php:124
 msgid "Add or remove Wiki Tags"
 msgstr ""
 
-#: inc/functions-register-cpt.php:124
+#: inc/functions-register-cpt.php:125
 msgid "Choose from the most used Wiki Tags"
 msgstr ""
 
-#: inc/functions-register-cpt.php:125
+#: inc/functions-register-cpt.php:126
 msgid "Wiki Tag Not Found"
 msgstr ""
 

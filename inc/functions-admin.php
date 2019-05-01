@@ -11,66 +11,66 @@ if ( is_admin() ) {
     *******************************/
     function yada_wiki_admin() {  
     
-    // Only add buttons if editing a Yada Wiki post
-    if ( current_user_can('edit_posts') ) {  
+	    // Only add buttons if editing a Yada Wiki post
+	    if ( current_user_can('edit_posts') ) {  
 
-        // Snippet adapted from Ross McKay - http://snippets.webaware.com.au/snippets/wordpress-admin_init-hook-and-the-elusive-typenow/
-        global $typenow;
-        if ( empty($typenow) ) {
-            // try to pick it up from the query string
-            if ( !empty($_GET['post']) ) {
-                $post = get_post($_GET['post']);
-                $typenow = $post->post_type;
-                $typenow = sanitize_text_field( $typenow );
-            }
-            // try to pick it up from the quick edit AJAX post
-            elseif ( !empty($_POST['post_ID']) ) {
-                $post = get_post($_POST['post_ID']);
-                $typenow = $post->post_type;
-                $typenow = sanitize_text_field( $typenow );
-            }
-            // added by David McCan
-            elseif ( yada_wiki_is_edit_page('new') ) {
-                if(empty($_GET['post_type'])) {
-                    $typenow = "post";	
-                }
-                else {
-                    $type_test = sanitize_text_field( $_GET['post_type'] );
-                    $typenow = $type_test;
-                }
-            }
-        }		
+	        // Snippet adapted from Ross McKay - http://snippets.webaware.com.au/snippets/wordpress-admin_init-hook-and-the-elusive-typenow/
+	        global $typenow;
+	        if ( empty($typenow) ) {
+	            // try to pick it up from the query string
+	            if ( !empty($_GET['post']) ) {
+	                $post = get_post($_GET['post']);
+	                $typenow = $post->post_type;
+	                $typenow = sanitize_text_field( $typenow );
+	            }
+	            // try to pick it up from the quick edit AJAX post
+	            elseif ( !empty($_POST['post_ID']) ) {
+	                $post = get_post($_POST['post_ID']);
+	                $typenow = $post->post_type;
+	                $typenow = sanitize_text_field( $typenow );
+	            }
+	            // added by David McCan
+	            elseif ( yada_wiki_is_edit_page('new') ) {
+	                if(empty($_GET['post_type'])) {
+	                    $typenow = "post";	
+	                }
+	                else {
+	                    $type_test = sanitize_text_field( $_GET['post_type'] );
+	                    $typenow = $type_test;
+	                }
+	            }
+	        }		
 
-        $options = get_option( 'yada_wiki_settings' );
-        $yadaWikiEditorButtons = false;
-        if ( isset($options['yada_wiki_checkbox_editor_buttons_setting']) ) {
-            $yadaWikiEditorButtons = true;
-        }
-            
-        if (yada_wiki_is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
-            foreach ( array('post.php','post-new.php') as $hook ) {
-                add_action( "admin_footer-$hook", 'yw_admin_footer' );
-            }    
+	        $options = get_option( 'yada_wiki_settings' );
+	        $yadaWikiEditorButtons = false;
+	        if ( isset($options['yada_wiki_checkbox_editor_buttons_setting']) ) {
+	            $yadaWikiEditorButtons = true;
+	        }
+	            
+	        if (yada_wiki_is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
+	            foreach ( array('post.php','post-new.php') as $hook ) {
+	                add_action( "admin_footer-$hook", 'yw_admin_footer' );
+	            }    
 
-            wp_enqueue_style( "wp-jquery-ui-dialog" );
-            wp_enqueue_script( 'jquery' );
-            wp_enqueue_script( 'jquery-ui-core' );
-            wp_enqueue_script( 'jquery-ui-dialog' );
-            wp_enqueue_script( 'jquery-ui-button' );
-            wp_enqueue_script( 'jquery-ui-widget' );
-            wp_enqueue_script( 'jquery-ui-position' );
-            wp_enqueue_script( 'jquery-ui-autocomplete' );
-            wp_enqueue_script( 'yadawiki-dialog', plugin_dir_url( __FILE__ ) . '../js/yadawiki-dialog.js', array( 'wpdialogs' ), '20150815' );
+	            wp_enqueue_style( "wp-jquery-ui-dialog" );
+	            wp_enqueue_script( 'jquery' );
+	            wp_enqueue_script( 'jquery-ui-core' );
+	            wp_enqueue_script( 'jquery-ui-dialog' );
+	            wp_enqueue_script( 'jquery-ui-button' );
+	            wp_enqueue_script( 'jquery-ui-widget' );
+	            wp_enqueue_script( 'jquery-ui-position' );
+	            wp_enqueue_script( 'jquery-ui-autocomplete' );
+	            wp_enqueue_script( 'yadawiki-dialog', plugin_dir_url( __FILE__ ) . '../js/yadawiki-dialog.js', array( 'wpdialogs' ), '20150815' );
 
-            add_filter( 'mce_external_plugins', 'yada_wiki_link_add_plugin' );  
-            add_filter( 'mce_external_plugins', 'yada_wiki_toc_add_plugin' );  
-            add_filter( 'mce_buttons', 'yada_wiki_link_register_button' );  
-            add_filter( 'mce_buttons', 'yada_wiki_toc_register_button' );  
-            
-            add_filter('wp_terms_checklist_args','yada_wiki_fix_cat_order');
-        }
-    }
-} 
+	            add_filter( 'mce_external_plugins', 'yada_wiki_link_add_plugin' );  
+	            add_filter( 'mce_external_plugins', 'yada_wiki_toc_add_plugin' );  
+	            add_filter( 'mce_buttons', 'yada_wiki_link_register_button' );  
+	            add_filter( 'mce_buttons', 'yada_wiki_toc_register_button' );  
+	            
+	            add_filter('wp_terms_checklist_args','yada_wiki_fix_cat_order');
+	        }
+	    }
+	} 
 
     /*****************************************************
     * Preserve the order of category terms in the editor

@@ -125,8 +125,17 @@ class yadawiki_toc_widget extends WP_Widget {
 			if ( $the_toc != "") {
 				$toc_status = get_post_status( $the_toc );
 				if( $toc_status == "publish" ) {
-					$yw_widget_content = apply_filters( 'the_content', $the_toc->post_content );
+					$has_content = $the_toc->post_content;
+					if ($has_content) {
+						$yw_widget_content = apply_filters( 'the_content', $the_toc->post_content );
+					} else {
+						$yw_widget_content = __('The TOC has no content.', 'yada_wiki_domain');
+					}					
+				} else {
+					$yw_widget_content = __('The TOC has not been published.', 'yada_wiki_domain');
 				}
+			} else {
+				$yw_widget_content = __('A wiki article with the title of TOC was not found.', 'yada_wiki_domain');
 			}
 		}
 		if( isset($before_widget) ) {

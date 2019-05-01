@@ -127,14 +127,26 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 	}
 	else if($show_toc == true) {
 		$the_toc = get_page_by_title( html_entity_decode("toc"), OBJECT, 'yada_wiki');
-		$toc_status = get_post_status( $the_toc );
-		
-		if( $toc_status == "publish" ) {
-			$the_content = apply_filters( 'the_content', $the_toc->post_content );
-			return $the_content;
+		if (empty((array) $the_toc)) {
+		    return __('A wiki article with the title of TOC was not found.', 'yada_wiki_domain');
+		} else {
+			$toc_status = get_post_status( $the_toc );
+			
+			if( $toc_status == "publish" ) {
+				$has_content = $the_toc->post_content;
+				if ($has_content) {
+					$the_content = apply_filters( 'the_content', $the_toc->post_content );
+					return $the_content;				
+				} else {
+					return __('The TOC has no content.', 'yada_wiki_domain');
+				}				
+			} else {
+				return __('The TOC has not been published.', 'yada_wiki_domain');
+			}	
 		}
 	}
 }
+
 
 function yada_wiki_index_shortcode($atts) {
 	extract( shortcode_atts( array( 
