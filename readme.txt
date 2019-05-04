@@ -1,5 +1,5 @@
 === Yada Wiki ===
-Contributors: dmccan
+Contributors: dmccan, simplyletgo
 Tags: wiki, shortcode, internal links, page links, faq, knowledge base
 Requires at least: 4.1
 Tested up to: 5.2
@@ -45,8 +45,8 @@ An example for listing all wiki categories by title:
 
 [yadawiki-index type="all-categories-name" columns="3"]
 
-**Sidebar Widget:**
-There is also a Yada Wiki widget for showing the TOC page and a list of article titles for a given category in the sidebar.  Please see the FAQ section for information about using the sidebar widget. 
+**Sidebar Widgets:**
+There are two Yada Wiki widgets. One for showing the TOC page and a list of article titles for a given category in the sidebar and the other for showing recent wiki articles.  Please see the FAQ section for information about using the sidebar widgets. 
 
 **Documentation:**
 Documentation is available at https://www.webtng.com/yada-wiki-documentation/
@@ -82,9 +82,17 @@ Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to l
 
 Yes, there is a Yada Wiki sub-menu under the main settings menu where you can enable showing the Yada Wiki shortcode buttons when editing posts and pages.  Remember, the wiki shortcode is only for linking to wiki pages.
 
+= Can I set a wiki page as my site home page? =
+
+Yes, on the Yada Wiki settings menu (Admin / Settings / Yada Wiki) there is now a place where you can select a wiki page for the site home page. The Home Page setting there will override the setting on the Settings / Reading page and the Customizer Home Page setting. If you change the settings there it will replace the page you select here.
+
 = How can I add a wiki table of contents menu in the sidebar? =
 
-There is now a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more than one version of the widget active at a time.
+There is a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more than one version of the widget active at a time.
+
+= How can I show recent wiki articles in the sidebar? =
+
+There is now a recent activity widget so that you can include a list of the most recent wiki articles.  You may optionally show the how long ago it was modified.  
 
 = Does Yada Wiki work with Page Builder plugins? =
 
@@ -166,7 +174,9 @@ The user @JulianSMoore has been very helpful in suggesting improvements and revi
 = 3.2 =
 * Added ability to translate Yada Wiki
 * Added Spanish translation
-* Added REST API support for Wiki Categories and Tags
+* Added REST API support for wiki categories and tags
+* Added recent activity widget (code contributed by @simplyletgo)
+* Added ability to set a wiki page as home page
 * Added placeholder output message for TOC tag when no TOC page is found or it is empty. 
 
 = 3.1 =

@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yada Wiki\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-01 19:19+0000\n"
-"PO-Revision-Date: 2019-05-01 19:21+0000\n"
+"POT-Creation-Date: 2019-05-04 14:19+0000\n"
+"PO-Revision-Date: 2019-05-04 14:21+0000\n"
 "Last-Translator: David <dcmccan@gmail.com>\n"
 "Language-Team: Spanish (Spain)\n"
 "Language: es_ES\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.2; wp-5.2-RC1-45274"
+"X-Loco-Version: 2.2.2; wp-5.2-RC2-45280"
 
 #: yada-wiki.php:129 yada-wiki.php:140
 msgid "Whoah, partner!"
@@ -252,18 +252,33 @@ msgstr ""
 msgid "Use the new Gutenberg Editor for Wiki Pages"
 msgstr "Utilice el nuevo editor de Gutenberg para las páginas wiki."
 
-#: inc/functions-settings.php:196
+#: inc/functions-settings.php:94
 msgid ""
-"Comment options must be enabled<br />for defauts to be set.<br /><br />"
+"Use Wiki Page for Site Home Page (see note below). Start typing Wiki Page "
+"Title"
+msgstr ""
+"Use la página de Wiki para la página de inicio del sitio (vea la nota a "
+"continuación). Comienza a escribir el título de la página de Wiki"
+
+#: inc/functions-settings.php:246
+msgid ""
+"Comment options must be enabled<br />for defaults to be set.<br /><br />"
 "Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
-"<br />The Wiki Slug should only contain lower case letters.<br />"
+"<br />The Wiki Slug should only contain lower case letters.<br /><br />The "
+"Home Page setting here will override the setting on the Settings / Reading "
+"page and the Customizer Home Page setting. If you change the settings there "
+"it will replace the page you select here.<br />"
 msgstr ""
 "Las opciones de comentarios deben estar habilitadas <br /> para que se "
 "configuren los valores predeterminados. <br /> <br /> Recuerde, solo los "
 "enlaces de wiki se pueden utilizar con los códigos cortos de wiki. <br /> "
-"<br /> El wiki Slug solo debe contener letras minúsculas. <br />"
+"<br /> El wiki El slug solo debe contener letras minúsculas. <br /> <br /> "
+"La configuración de la página de inicio aquí anulará la configuración en la "
+"página de configuración / lectura y la configuración de la página de inicio "
+"del personalizador. Si cambia los ajustes allí, reemplazará la página que "
+"seleccione aquí. <br />"
 
-#: inc/functions-settings.php:201
+#: inc/functions-settings.php:251
 msgid "Only lower case letters are allowed"
 msgstr "Sólo se permiten letras minúsculas"
 
@@ -271,7 +286,7 @@ msgstr "Sólo se permiten letras minúsculas"
 msgid "Yada Wiki TOC"
 msgstr "Yada Wiki TOC"
 
-#: inc/functions-widgets.php:42
+#: inc/functions-widgets.php:42 inc/functions-widgets.php:200
 msgid "Title:"
 msgstr "Título:"
 
@@ -306,6 +321,14 @@ msgstr "fecha"
 #: inc/functions-widgets.php:74 inc/yadawiki-dialog-toc.php:78
 msgid "Creation Date"
 msgstr "Fecha de creación"
+
+#: inc/functions-widgets.php:204
+msgid "Number of Posts:"
+msgstr "Número de mensajes:"
+
+#: inc/functions-widgets.php:208
+msgid "Display post date?"
+msgstr "¿Mostrar fecha de publicación?"
 
 #: inc/yadawiki-dialog-link.php:27
 msgid "Yada Wiki Link"

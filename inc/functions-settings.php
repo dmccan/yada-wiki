@@ -88,6 +88,14 @@ function yada_wiki_settings_init() {
 		'pluginPage', 
 		'yada_wiki_pluginPage_section' 
 	);
+
+	add_settings_field( 
+		'yada_wiki_textfield_wiki_homepage_setting', 
+		__( 'Use Wiki Page for Site Home Page (see note below). Start typing Wiki Page Title', 'yada_wiki_domain' ), 
+		'yada_wiki_textfield_wiki_homepage_setting_render', 
+		'pluginPage', 
+		'yada_wiki_pluginPage_section' 
+	);
 }
 
 /************************************
@@ -166,14 +174,52 @@ function yada_wiki_checkbox_use_gutenberg_setting_render() {
 	<?php
 }
 
+/***************************************************
+* Use Wiki Page for Site Home Page
+***************************************************/
+function yada_wiki_textfield_wiki_homepage_setting_render() { 
+
+	$options = get_option( 'yada_wiki_settings' );
+	if ( isset($options['yada_wiki_textfield_wiki_homepage_setting']) ) {
+		$option = $options['yada_wiki_textfield_wiki_homepage_setting'];	
+	} else {
+		$option = "";
+	}
+	?>
+	<input type='text' name='yada_wiki_settings[yada_wiki_textfield_wiki_homepage_setting]' id="wikiHomePage" onkeyup="javascript:doYWLookup(this.value);" value='<?php echo $option; ?>'>
+	<?php
+}
+
 /******************************
-* Process settings
+* Settings page initialization
 *******************************/
 function yada_wiki_settings_section_callback() { 
     if (!current_user_can('manage_options')) {
         wp_die('Unauthorized user');
     }
-	flush_rewrite_rules();
+    // checking if home page has been changed outside of Yada Wiki settings area
+	$options = get_option( 'yada_wiki_settings' );
+	if ( isset($options['yada_wiki_textfield_wiki_homepage_setting']) ) {
+		$option = $options['yada_wiki_textfield_wiki_homepage_setting'];	
+    	$currentSetting = get_option( 'show_on_front' );
+    	if ($currentSetting == 'page') {
+    		$currentHomePageID = get_option( 'page_on_front' );
+    		// if it was previously set to a wiki page but changed to a regular page so we will clear the home page setting here
+    		if ( get_post_type( $currentHomePageID ) != 'yada_wiki' ) {
+      			$myOptions = $options;
+      			$myOptions['yada_wiki_textfield_wiki_homepage_setting'] = '';
+  				update_option( 'yada_wiki_settings', $myOptions );
+    		}
+    	} else {
+    		// set to show posts so clear setting here
+  			$myOptions = $options;
+  			$myOptions['yada_wiki_textfield_wiki_homepage_setting'] = '';
+			update_option( 'yada_wiki_settings', $myOptions );
+    	}
+	}
+	$options = get_option( 'yada_wiki_settings' );
+    
+    flush_rewrite_rules();	
 }
 
 /******************************
@@ -182,19 +228,19 @@ function yada_wiki_settings_section_callback() {
 function yada_wiki_options_page() { 
 
 	?>
-	<div style="padding:10px;">
+	<div class="wrap">
 		<h1>Yada Wiki</h1>
-		<div style="background-color:#ffffff; padding:30px; width:325px; margin-top:25px;">
-		<form action="options.php" id="yadaWikiForm" method="post" onsubmit="doOptionsCheck()">
-			<?php
-			settings_fields( 'pluginPage' );
-			do_settings_sections( 'pluginPage' );
-			submit_button();
-			?>		
-		</form>
-		<div style="text-align: center; width:75%;">
-			<?php _e('Comment options must be enabled<br />for defauts to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.<br /><br />The Wiki Slug should only contain lower case letters.<br />', 'yada_wiki_domain') ?>
-		</div>
+		<div style="background-color:#ffffff; padding:30px; width:390px; margin-top:25px;">
+			<form action="options.php" id="yadaWikiForm" method="post" onsubmit="return doOptionsCheck()">
+				<?php
+				settings_fields( 'pluginPage' );
+				do_settings_sections( 'pluginPage' );
+				submit_button();
+				?>
+			</form>
+			<div style="text-align: center; width:75%;"><hr>
+				<?php _e('Comment options must be enabled<br />for defaults to be set.<br /><br />Remember, only wiki links can be<br />used with the wiki shortcodes.<br /><br />The Wiki Slug should only contain lower case letters.<br /><br />The Home Page setting here will override the setting on the Settings / Reading page and the Customizer Home Page setting. If you change the settings there it will replace the page you select here.<br />', 'yada_wiki_domain') ?>
+			</div>
 		</div>			
 	</div>
 	<script type="text/javascript">
@@ -211,13 +257,59 @@ function yada_wiki_options_page() {
 				tempSlug = tempSlug.toLowerCase();
 				var lowerCaseLetters = /^[a-z]+$/;
 				if(lowerCaseLetters.test(tempSlug) == false) {
-					alert(badSlugMessage);
 					document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value = "wiki";
+					alert(badSlugMessage); return false;
 				} else {
 					document.getElementsByName('yada_wiki_settings[yada_wiki_textfield_wiki_slug_setting]')[0].value = tempSlug;
 				}
 			}
+			sanitizeHomePage();
+			doProcessHomePage();
+			return true;
 		}
+
+		function doYWLookup(what) {
+		    if(what.length > 2) {
+		        jQuery('#wikiHomePage').autocomplete({
+		            source: function(request, response) {
+		                jQuery.ajax({
+		                    url: ajaxurl,
+		                    dataType: 'json',
+		                    data: {
+		                        action : 'yada_wiki_suggest',
+		                        term : jQuery('#wikiHomePage').val()
+		                    },
+		                    success: function(data) {
+		                        response(data);
+		                    }
+		                });
+		            },                
+		            type: "POST",
+		            minLength: 2,
+		            delay: 100
+		        });        
+		    }
+		}
+		
+		function doProcessHomePage() {
+			console.log('started');
+		    jQuery.ajax({
+		        url: ajaxurl, 
+		        data: {
+					action: 'yada_wiki_homepage',
+					homePage: jQuery('#wikiHomePage').val()
+		        },
+		        type: "POST",
+                success: function(data) {
+                    //console.log(data);
+                }
+		    });	
+		}
+		
+		function sanitizeHomePage() {
+			var homePage = jQuery('#wikiHomePage').val().replace(/<script[^>]*?>.*?<\/script>/gi, '').replace(/<[\/\!]*?[^<>]*?>/gi, '').replace(/<style[^>]*?>.*?<\/style>/gi, '').replace(/<![\s\S]*?--[ \t\n\r]*>/gi, '');
+			jQuery('#wikiHomePage').val(homePage);		
+		}		
 	</script>
 	<?php
 

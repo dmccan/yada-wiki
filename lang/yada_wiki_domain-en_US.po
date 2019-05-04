@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yada Wiki\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-01 19:19+0000\n"
-"PO-Revision-Date: 2019-05-01 19:22+0000\n"
+"POT-Creation-Date: 2019-05-04 14:19+0000\n"
+"PO-Revision-Date: 2019-05-04 14:20+0000\n"
 "Last-Translator: David <dcmccan@gmail.com>\n"
 "Language-Team: English (United States)\n"
 "Language: en_US\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.2; wp-5.2-RC1-45274"
+"X-Loco-Version: 2.2.2; wp-5.2-RC2-45280"
 
 #: yada-wiki.php:129 yada-wiki.php:140
 msgid "Whoah, partner!"
@@ -248,17 +248,31 @@ msgstr "Change the Wiki Slug Used in the Permalink (see rules below)"
 msgid "Use the new Gutenberg Editor for Wiki Pages"
 msgstr "Use the new Gutenberg Editor for Wiki Pages"
 
-#: inc/functions-settings.php:196
+#: inc/functions-settings.php:94
 msgid ""
-"Comment options must be enabled<br />for defauts to be set.<br /><br />"
-"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
-"<br />The Wiki Slug should only contain lower case letters.<br />"
+"Use Wiki Page for Site Home Page (see note below). Start typing Wiki Page "
+"Title"
 msgstr ""
-"Comment options must be enabled<br />for defauts to be set.<br /><br />"
-"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
-"<br />The Wiki Slug should only contain lower case letters.<br />"
+"Use Wiki Page for Site Home Page (see note below). Start typing Wiki Page "
+"Title"
 
-#: inc/functions-settings.php:201
+#: inc/functions-settings.php:246
+msgid ""
+"Comment options must be enabled<br />for defaults to be set.<br /><br />"
+"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
+"<br />The Wiki Slug should only contain lower case letters.<br /><br />The "
+"Home Page setting here will override the setting on the Settings / Reading "
+"page and the Customizer Home Page setting. If you change the settings there "
+"it will replace the page you select here.<br />"
+msgstr ""
+"Comment options must be enabled<br />for defaults to be set.<br /><br />"
+"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
+"<br />The Wiki Slug should only contain lower case letters.<br /><br />The "
+"Home Page setting here will override the setting on the Settings / Reading "
+"page and the Customizer Home Page setting. If you change the settings there "
+"it will replace the page you select here.<br />"
+
+#: inc/functions-settings.php:251
 msgid "Only lower case letters are allowed"
 msgstr "Only lower case letters are allowed"
 
@@ -266,7 +280,7 @@ msgstr "Only lower case letters are allowed"
 msgid "Yada Wiki TOC"
 msgstr "Yada Wiki TOC"
 
-#: inc/functions-widgets.php:42
+#: inc/functions-widgets.php:42 inc/functions-widgets.php:200
 msgid "Title:"
 msgstr "Title:"
 
@@ -301,6 +315,14 @@ msgstr "date"
 #: inc/functions-widgets.php:74 inc/yadawiki-dialog-toc.php:78
 msgid "Creation Date"
 msgstr "Creation Date"
+
+#: inc/functions-widgets.php:204
+msgid "Number of Posts:"
+msgstr "Number of Posts:"
+
+#: inc/functions-widgets.php:208
+msgid "Display post date?"
+msgstr "Display post date?"
 
 #: inc/yadawiki-dialog-link.php:27
 msgid "Yada Wiki Link"

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Yada Wiki\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-05-01 19:19+0000\n"
+"POT-Creation-Date: 2019-05-04 14:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -249,14 +249,23 @@ msgstr ""
 msgid "Use the new Gutenberg Editor for Wiki Pages"
 msgstr ""
 
-#: inc/functions-settings.php:196
+#: inc/functions-settings.php:94
 msgid ""
-"Comment options must be enabled<br />for defauts to be set.<br /><br />"
-"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
-"<br />The Wiki Slug should only contain lower case letters.<br />"
+"Use Wiki Page for Site Home Page (see note below). Start typing Wiki Page "
+"Title"
 msgstr ""
 
-#: inc/functions-settings.php:201
+#: inc/functions-settings.php:246
+msgid ""
+"Comment options must be enabled<br />for defaults to be set.<br /><br />"
+"Remember, only wiki links can be<br />used with the wiki shortcodes.<br />"
+"<br />The Wiki Slug should only contain lower case letters.<br /><br />The "
+"Home Page setting here will override the setting on the Settings / Reading "
+"page and the Customizer Home Page setting. If you change the settings there "
+"it will replace the page you select here.<br />"
+msgstr ""
+
+#: inc/functions-settings.php:251
 msgid "Only lower case letters are allowed"
 msgstr ""
 
@@ -264,7 +273,7 @@ msgstr ""
 msgid "Yada Wiki TOC"
 msgstr ""
 
-#: inc/functions-widgets.php:42
+#: inc/functions-widgets.php:42 inc/functions-widgets.php:200
 msgid "Title:"
 msgstr ""
 
@@ -298,6 +307,14 @@ msgstr ""
 
 #: inc/functions-widgets.php:74 inc/yadawiki-dialog-toc.php:78
 msgid "Creation Date"
+msgstr ""
+
+#: inc/functions-widgets.php:204
+msgid "Number of Posts:"
+msgstr ""
+
+#: inc/functions-widgets.php:208
+msgid "Display post date?"
 msgstr ""
 
 #: inc/yadawiki-dialog-link.php:27

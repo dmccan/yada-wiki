@@ -182,7 +182,7 @@ final class YadaWikiPlugin {
 		require_once( $this->dir_path . 'inc/functions-register-cpt.php' );
 		require_once( $this->dir_path . 'inc/functions-settings-load.php' );
 		require_once( $this->dir_path . 'inc/functions-widgets.php' );
-
+		
 		// Load public files.
 		if ( ! is_admin() ) {
 			require_once( $this->dir_path . 'inc/functions-public.php' );
@@ -219,10 +219,13 @@ final class YadaWikiPlugin {
 		// admin facing
 		if ( is_admin() ) {
 			add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'yada_wiki_add_settings_link' );
+			add_filter( 'get_pages', 'add_yada_wiki_to_dropdown' );    
 			add_action( 'admin_enqueue_scripts', 'yada_wiki_admin', 10 ); 
 			add_action( 'wp_ajax_yada_wiki_suggest', 'yada_wiki_suggest_callback' );
+			add_action( 'wp_ajax_yada_wiki_homepage', 'yada_wiki_homepage_callback' );
 			add_action( 'admin_menu', 'yada_wiki_add_admin_menu' );
 			add_action( 'admin_init', 'yada_wiki_settings_init' );
+			
 			// Handle Gutenberg
 			if ( version_compare( $GLOBALS['wp_version'], '5.0-beta', '>' ) ) {
 				// Gutenberg is default
@@ -237,7 +240,8 @@ final class YadaWikiPlugin {
 			add_filter( 'wp_insert_post_data', 'yada_wiki_set_comment_defaults' );
 		}		
 		
-		add_action('widgets_init', 'yadawiki_toc_widget_register_widgets');		
+		add_action('widgets_init', 'yadawiki_toc_widget_register_widgets');
+		add_action('widgets_init', 'yadawiki_activity_widget_register_widgets');
 
 		// Register activation hook.
 		register_activation_hook( __FILE__, array( $this, 'activation' ) );
