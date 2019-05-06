@@ -215,14 +215,12 @@ final class YadaWikiPlugin {
 			add_shortcode('yadawikitoc', 'yada_wiki_toc_shortcode');
 			add_shortcode('yadawiki-index', 'yada_wiki_index_shortcode');
 		}
-
+		
 		// admin facing
 		if ( is_admin() ) {
 			add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'yada_wiki_add_settings_link' );
-			add_filter( 'get_pages', 'add_yada_wiki_to_dropdown' );    
 			add_action( 'admin_enqueue_scripts', 'yada_wiki_admin', 10 ); 
 			add_action( 'wp_ajax_yada_wiki_suggest', 'yada_wiki_suggest_callback' );
-			add_action( 'wp_ajax_yada_wiki_homepage', 'yada_wiki_homepage_callback' );
 			add_action( 'admin_menu', 'yada_wiki_add_admin_menu' );
 			add_action( 'admin_init', 'yada_wiki_settings_init' );
 			

@@ -16,7 +16,6 @@ if ( is_admin() ) {
 
 	        // Snippet adapted from Ross McKay - http://snippets.webaware.com.au/snippets/wordpress-admin_init-hook-and-the-elusive-typenow/
 	        global $typenow;
-			global $pagenow;
 
 	        if ( empty($typenow) ) {
 	            // try to pick it up from the query string
@@ -45,24 +44,12 @@ if ( is_admin() ) {
 
 	        $options = get_option( 'yada_wiki_settings' );
 	        $yadaWikiEditorButtons = false;
-	        $yadawikiSuggest = false;
 	        
 	        if ( isset($options['yada_wiki_checkbox_editor_buttons_setting']) ) {
 	            $yadaWikiEditorButtons = true;
-	        }
-	        
-	        $getPage = isset($_GET['page']) ? $_GET['page'] : '';
-			if ( $pagenow == 'options-general.php' && $getPage == 'yada_wiki') {
-				$yadawikiSuggest = true;
-			}        
+	        }    
 			
-			if ($yadawikiSuggest == true) {
-	            wp_enqueue_script( 'jquery' );
-	            wp_enqueue_script( 'jquery-ui-core' );
-	            wp_enqueue_script( 'jquery-ui-widget' );
-	            wp_enqueue_script( 'jquery-ui-position' );
-	            wp_enqueue_script( 'jquery-ui-autocomplete' );				
-			} else if (yada_wiki_is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
+			if (yada_wiki_is_edit_page() && ("yada_wiki" == $typenow || $yadaWikiEditorButtons == true)){
 	            foreach ( array('post.php','post-new.php') as $hook ) {
 	                add_action( "admin_footer-$hook", 'yw_admin_footer' );
 	            }
@@ -139,7 +126,7 @@ if ( is_admin() ) {
             
         if(!empty($_REQUEST['term'])){
             $searchInput =$_REQUEST['term'];
-            $searchInput = sanitize_title($searchInput, "", "query");
+            // wpdb->prepare sanitizes strings
             $searchInput = "%".$searchInput."%";
             
             $sql = $wpdb->prepare(
@@ -168,34 +155,6 @@ if ( is_admin() ) {
         }
         wp_die();
     }
-    
-    function yada_wiki_homepage_callback() {
-    	$option =$_REQUEST['homePage'];         
-	    if ($option != '') {
-	    	$wikiPage = sanitize_title($option);
-			$pageExists = get_page_by_path( $wikiPage, OBJECT, 'yada_wiki');
-			if ( $pageExists != "") {
-				$pageStatus = get_post_status( $pageExists );
-				if( $pageStatus == "publish" ) {
-					// save the settings
-					update_option( 'show_on_front', 'page' );
-					update_option( 'page_on_front', $pageExists->ID );
-				}
-			}   	
-	    } else {
-	    	// check the setting to see if it is set to a wiki page. if so then clear the setting
-	    	$currentSetting = get_option( 'show_on_front' );
-	    	if ($currentSetting == 'page') {
-	    		$currentHomePageID = get_option( 'page_on_front' );
-	    		// if it was previously set to a wiki page but not cleared, we will clear the setting
-	    		if ( get_post_type( $currentHomePageID ) == 'yada_wiki' ) {
-	    			update_option( 'page_on_front', 0 );
-	    			update_option( 'show_on_front', 'posts' );
-	    		}
-	    	}
-	    }
-		flush_rewrite_rules();	
-    }
  
     /********************************************************
     * Funciton from Ohad Raz - https://en.bainternet.info/
@@ -212,26 +171,5 @@ if ( is_admin() ) {
         else //check for either new or edit
             return in_array( $pagenow, array( 'post.php', 'post-new.php' ) );
     }
-    
-	function add_yada_wiki_to_dropdown( $pages ){
-		global $pagenow;		
-
-		if ( $pagenow == 'options-reading.php' || $pagenow == 'customize.php' ) {
-	    	// if a wiki page is set for home page then show it in the drop down
-	    	$currentSetting = get_option( 'show_on_front' );
-	    	if ($currentSetting == 'page') {
-	    		$currentHomePageID = get_option( 'page_on_front' );
-	    		if ( get_post_type( $currentHomePageID ) == 'yada_wiki' ) {
-				    $args = array(
-				        'post_type' => 'yada_wiki',
-				        'include' => $currentHomePageID,
-				    );
-				    $items = get_posts($args);
-				    $pages = array_merge($pages, $items);	
-	    		}
-	    	}		
-		}
-	    return $pages;
-	}
 }
 

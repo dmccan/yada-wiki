@@ -82,10 +82,6 @@ Yes, but the wiki shortcode is only for linking to wiki pages.  If you want to l
 
 Yes, there is a Yada Wiki sub-menu under the main settings menu where you can enable showing the Yada Wiki shortcode buttons when editing posts and pages.  Remember, the wiki shortcode is only for linking to wiki pages.
 
-= Can I set a wiki page as my site home page? =
-
-Yes, on the Yada Wiki settings menu (Admin / Settings / Yada Wiki) there is now a place where you can select a wiki page for the site home page. The Home Page setting there will override the setting on the Settings / Reading page and the Customizer Home Page setting. If you change the settings there it will replace the page you select here.
-
 = How can I add a wiki table of contents menu in the sidebar? =
 
 There is a sidebar widget so that you can include the TOC or a category list of wiki articles. It is a multi-instance widget so you can have more than one version of the widget active at a time.
@@ -173,10 +169,9 @@ The user @JulianSMoore has been very helpful in suggesting improvements and revi
 
 = 3.2 =
 * Added ability to translate Yada Wiki
-* Added Spanish translation
+* Added Spanish translation (note: JavaScript files are not yet translated)
 * Added REST API support for wiki categories and tags
 * Added recent activity widget (code contributed by @simplyletgo)
-* Added ability to set a wiki page as home page
 * Added placeholder output message for TOC tag when no TOC page is found or it is empty. 
 
 = 3.1 =
