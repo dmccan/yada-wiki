@@ -3,7 +3,7 @@
  * Plugin Name: Yada Wiki
  * Plugin URI:  https://www.webtng.com/yada-wiki-documentation
  * Description: This plugin provides a simple wiki for your WordPress site.
- * Version:     3.2
+ * Version:     3.2.1
  * Author:      David McCan
  * Author URI:  https://www.webtng.com
  * Text Domain: yada_wiki_domain

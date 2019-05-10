@@ -122,7 +122,7 @@ class yadawiki_toc_widget extends WP_Widget {
 		}
 		else {
 			$the_toc = get_page_by_title( html_entity_decode("toc"), OBJECT, 'yada_wiki');
-			if ( $the_toc != "") {
+			if ( isset($the_toc) ) {
 				$toc_status = get_post_status( $the_toc );
 				if( $toc_status == "publish" ) {
 					$has_content = $the_toc->post_content;

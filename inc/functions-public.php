@@ -127,9 +127,10 @@ function get_yada_wiki_toc( $show_toc, $category, $order ){
 	}
 	else if($show_toc == true) {
 		$the_toc = get_page_by_title( html_entity_decode("toc"), OBJECT, 'yada_wiki');
-		if (empty((array) $the_toc)) {
+		if (! isset($the_toc) ) {
 		    return __('A wiki article with the title of TOC was not found.', 'yada_wiki_domain');
-		} else {
+		} 
+		else {
 			$toc_status = get_post_status( $the_toc );
 			
 			if( $toc_status == "publish" ) {
